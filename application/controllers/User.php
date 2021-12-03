@@ -114,6 +114,23 @@
 
         }
 
+        public function logout ()
+        {
+
+            if ( $this -> session -> has_userdata ('login_user')) {
+
+                $this -> session -> unset_userdata ('login_user');
+                
+                redirect ( base_url ('giris-yap'));
+
+            } else {
+
+                show_404();
+
+            }
+
+        }
+
     }
 
 ?>
