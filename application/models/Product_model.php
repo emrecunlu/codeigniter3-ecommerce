@@ -12,6 +12,18 @@
 
         }
 
+        public function get ($where)
+        {
+
+            $product = $this -> db
+                             -> select ('products.product_id, products.product_name, products.product_price, products.product_image, products.product_url, categories.category_name')
+                             -> join ('categories', 'categories.category_id = products.category_id', 'join')  
+                             -> get_where ($this -> table_name, $where);
+                             
+            return $product;
+
+        }
+
         public function get_all ($where = array (), $limit = null)
         {
 
