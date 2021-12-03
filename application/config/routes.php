@@ -52,4 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['giris-yap'] = 'login';
+$route['kayit-ol'] = 'register';
 $route['([a-z0-9-]+)'] = 'product/index/$1';
