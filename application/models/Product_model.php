@@ -39,6 +39,28 @@
 
         }
 
+        public function get_images ($where)
+        {
+
+            $images = $this -> db
+                            -> get_where ('product_images', $where)
+                            -> result ();
+            
+            return $images;
+
+        }
+
+        public function get_options ($where)
+        {
+
+            $options = $this -> db
+                             -> get_where ('product_options', $where)
+                             -> result ();
+
+            return $options;
+
+        }
+
     }
 
 ?>
