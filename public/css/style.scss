@@ -388,34 +388,28 @@ section#products {
 .container-fluid.form-container {
     padding: 50px 0;
     .user__form {
-        .login__form,
-        .register__form {
-            flex-shrink: 0;
-            width: 100%;
-        }
+        padding: 0 80px;
         .login__form {
+            padding-top: 20px;
             display: none;
             &.active {
                 display: block;
             }
         }
         .register__form {
+            padding-top: 20px;
             display: none;
             &.active {
                 display: block;
             }
         }
-    .forms {
-        display: flex;
-        flex-shrink: 0;
-    }
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(#000, .03);
-    border-radius: 4px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background: rgba(#000, .03);
+        border-radius: 4px;
+        padding-top: 40px;
+        padding-bottom: 40px;
     .form__links {
         border-bottom: 1px solid #eee;
         ul {
@@ -427,6 +421,9 @@ section#products {
                 font-size: 18px;
                 display: block;
                 padding: 15px 20px;
+                a {
+                    color: #002556;
+                }
                 &.active {
                     border-bottom: 3px solid #002556;
                     font-weight: 500;
@@ -455,8 +452,6 @@ section#products {
             }
         }
         width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
         label {
             display: block;
             font-size: 13px;
@@ -477,7 +472,6 @@ section#products {
     button {
         display: block;
         width: 100%;
-        max-width: 400px;
         background: #002556;
         border-radius: 24px;
         color: #fff;
@@ -897,6 +891,43 @@ section#best-seller {
                     color: #fff;
                     font-weight: 500;
                 }
+            }
+        }
+    }
+}
+.error__list {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    &.error {
+        .error__icon {
+            background: #E2747E;
+        }
+    }
+    &.success {
+        .error__icon {
+            background: #22bb33;
+        }
+    }
+    .error__icon {
+        padding: 25px 0;
+        text-align: center;
+        i {
+            font-size: 30px;
+            color: #fff;
+        }
+    }
+    .error__messages {
+        padding: 20px;
+        background: #ffff;
+        ul {
+            li {
+                padding: 8px 0;
+                font-weight: 500;
+                font-size: 14px;
+                list-style-type: circle;
+                margin: 0 20px;
             }
         }
     }
