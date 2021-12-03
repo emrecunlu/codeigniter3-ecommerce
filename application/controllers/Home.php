@@ -8,12 +8,20 @@
             
             parent::__construct ();
 
+            $this -> load -> model ('Product_model', 'product');
+
+            $this -> load -> helper ('text');
+            
         }
 
         public function index ()
         {
 
-            echo 'Hello other!';
+            $this -> load -> view ('home', array (
+                'products' => $this -> product -> get_all ([
+                    'is_live' => 1
+                ], 20)
+            ));
 
         }
 
