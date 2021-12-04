@@ -30,7 +30,7 @@
                 <div class="forms">
                     <?php $this -> load -> view ('includes/msg_error.php'); ?>
                     <div class="register__form form__user active">
-                        <form action="<?=base_url('user/register');?>" method="post">
+                        <?php echo form_open(base_url('user/register')); ?>
                             <div class="input__group">
                                 <label for="user-name">İsim Soyisim</label>
                                 <input type="text" name="user_name" id="user-name" placeholder="ad soyad" required>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <button type="submit" id="login-btn" name="login-btn">KAYIT OL</button>
-                        </form>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>

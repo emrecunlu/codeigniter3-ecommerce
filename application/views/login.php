@@ -30,7 +30,7 @@
                 <div class="forms">
                     <div class="login__form form__user active">
                         <?php $this -> load -> view ('includes/msg_error.php'); ?>
-                        <form action="<?=base_url('user/login')?>" method="post">
+                        <?php echo form_open(base_url('user/login')); ?>
                             <div class="input__group">
                                 <label for="user-mail">E-Mail</label>
                                 <input type="email" name="user_email" id="user-email" placeholder="ad.soyad@example.com">
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <button type="submit" id="login-btn" name="login-btn">GİRİŞ YAP</button>
-                        </form>
+                        <?php form_close(); ?>
                     </div>
                 </div>
             </div>

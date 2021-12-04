@@ -22,7 +22,7 @@
                 <div class="user__items">
                     <ul>
                         <li class="active">
-                            <a href="#">
+                            <a href="<?=base_url('giris-yap');?>">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span>HESAP</span>
                             </a>
