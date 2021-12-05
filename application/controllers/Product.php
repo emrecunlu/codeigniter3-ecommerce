@@ -10,6 +10,8 @@
 
             $this -> load -> model ('Product_model', 'product');
 
+            $this->load->library('encryption');
+
         }
 
         public function index ($url)

@@ -105,6 +105,7 @@
             </div>
         </div>
     </section>
+    <input type="hidden" id="product-id" value="<?=$this -> encryption -> encrypt ($product -> product_id)?>">
     <?php $this -> load -> view ('includes/scripts'); ?>
     <script>
         
@@ -159,8 +160,53 @@
     </script>
     <script>
 
+        $('#add-to-basket').click ( function () {
 
+            $.ajax ({
+                type: 'POST',
+                url: '<?=base_url('api/add_basket');?>',
+                data: {
+                    'product_id': $ ('#product-id').val (),
+                    'product_option': $('.selection__product:checked').val (),
+                },
+                dataType: 'JSON',
 
+                success: function ( response) {
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+
+                    if ( response.status === 'OK') {
+
+                        toastr["success"](response.message, "Sepete Eklendi!");
+
+                        $('.total__basket').html (response.basket_qty);
+                        
+                    } else {
+
+                        toastr["danger"](response.message, "Hata!");
+
+                    }
+                }
+            })
+
+        });
+        
     </script>
 </body>
 </html>
