@@ -705,11 +705,11 @@ section#best-seller .best__seller .swiper .swiper-wrapper .swiper-slide {
       padding: 15px 0; }
 
 .backdrop {
-  overflow: hidden;
+  overflow-y: hidden;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 99999;
   display: flex;

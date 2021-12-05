@@ -14,30 +14,13 @@
                 </div>
                 <div class="nav__items">
                     <ul>
+                        <?php foreach ($this -> categories -> get_all() as $category) : ?>
                         <li>
-                            <a href="#">Telefon</a>
+                            <a href="<?=base_url('kategori/' . strtolower($category -> category_name));?>">
+                                <?=$category -> category_name;?>
+                            </a>
                         </li>
-                        <li>
-                            <a href="#">Bilgisayar</a>
-                        </li>
-                        <li>
-                            <a href="#">Tv, Ev Elektroniği</a>
-                        </li>
-                        <li>
-                            <a href="#">Bilgisayar Parçaları</a>
-                        </li>
-                        <li>
-                            <a href="#">Foto, Kamera</a>
-                        </li>
-                        <li>
-                            <a href="#">Tv, Ev Elektroniği</a>
-                        </li>
-                        <li>
-                            <a href="#">Bilgisayar Parçaları</a>
-                        </li>
-                        <li>
-                            <a href="#">Foto, Kamera</a>
-                        </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>

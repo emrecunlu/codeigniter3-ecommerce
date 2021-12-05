@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 03 Ara 2021, 18:10:58
+-- Üretim Zamanı: 05 Ara 2021, 15:44:20
 -- Sunucu sürümü: 10.4.22-MariaDB
 -- PHP Sürümü: 8.0.13
 
@@ -37,15 +37,17 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `category_name`) VALUES
-(1, 'Elektronik'),
-(2, 'Moda'),
-(3, 'Ev, Yaşam, Kırtasiye, Ofis'),
-(4, 'Oto, Bahçe, Yapı Market'),
-(5, 'Anne, Bebek, Oyuncak'),
-(6, 'Spor, Outdoor'),
-(7, 'Kozmetik, Kişisel Bakım'),
-(8, 'Süpermarket, Pet Shop'),
-(9, 'Kitap, Müzik, Film, Hobi');
+(10, 'Telefon'),
+(11, 'Bilgisayar'),
+(12, 'Tv, Ev Elektroniği'),
+(13, 'Bilgisayar Parçaları'),
+(14, 'Foto, Kamera'),
+(15, 'Ofis, Kırtasiye'),
+(16, 'Aksesuar'),
+(17, 'Oyun, Hobi'),
+(18, 'Ev, Mutfak'),
+(19, 'Kişisel Bakım'),
+(20, 'Spor, Outdoor');
 
 -- --------------------------------------------------------
 
@@ -69,9 +71,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `category_id`, `product_image`, `product_entry_date`, `product_url`, `is_live`) VALUES
-(1, 'Casper Excalibur G900.1180-BF60X-B Intel Core I7 11800H 16GB 1 TB SSD RTX3060 Freedos 15.6\" FHD Taşınabilir Bilgisayar\r\n', '15998.00', 1, '110000048412269.jpg', '2021-12-03 16:20:07', 'casper-excalibur-g9001180-bf60x-b-intel-core-i7-11800h-16gb-1-tb-ssd-rtx3060-freedos-156-fhd-tasinabilir-bilgisayar', 1),
-(2, 'Koton Pamuklu Oversize T-Shirt\r\n', '48.99', 2, '110000040878751.jpg', '2021-12-03 16:24:03', 'koton-pamuklu-oversize-t-shirt', 1),
-(3, 'Lassa 185/65 R15 88T Snoways 4 Oto Kış Lastiği ( Üretim Yılı: 2021 )\r\n', '552.00', 4, '9937448075314.jpg', '2021-12-03 16:25:59', 'lassa-18565-r15-88t-snoways-4-oto-kis-lastigi-uretim-yili-2021', 1);
+(4, 'Apple MacBook Air M1 Çip 8GB 256GB SSD macOS 13\" QHD Taşınabilir Bilgisayar Uzay Grisi MGN63TU/A', '13499.00', 11, '10983949860914.jpg', '2021-12-05 14:25:56', 'apple-macbook-air-m1-cip-8gb-256gb-ssd-macos-13-qhd-tasinabilir-bilgisayar-uzay-grisi-mgn63tua', 1),
+(5, 'Xiaomi Redmi Note 10S 128 GB 6 GB Ram (Xiaomi Türkiye Garantili)', '4069.00', 10, '110000045850384.jpg', '2021-12-05 14:27:33', 'xiaomi-redmi-note-10s-128-gb-6-gb-ram-xiaomi-turkiye-garantili', 1),
+(6, 'Msı Rtx 3060 Ti Gamıng Z Trıo Lhr 8gb Gddr6 256BIT Ekran Kartı RTX-3060-TI-GAMING-Z-TRIO-8G-LHR', '21664.09', 13, '110000055071814.jpg', '2021-12-05 14:28:26', 'msi-rtx-3060-ti-gaming-z-trio-lhr-8gb-gddr6-256bit-ekran-karti-rtx-3060-ti-gaming-z-trio-8g-lhr', 1),
+(7, 'Yüzüklerin Efendisi 3 Cilt Takım (Yüzük Kardeşliği, İki Kule, Kralın Dönüşü)\r\n', '189.90', 15, '10481312071730.jpg', '2021-12-05 14:29:57', 'yuzuklerin-efendisi-3-cilt-takim-yuzuk-kardesligi-iki-kule-kralin-donusu', 1),
+(8, 'MSI B450M Bazooka AM4 DDR4 3466 (OC )HDMI M.2 USB3.2 WIFI MATX Anakart\r\n', '1009.62', 13, '11259522875442.jpg', '2021-12-05 14:31:08', 'msi-b450m-bazooka-am4-ddr4-3466-oc-hdmi-m2-usb32-wifi-matx-anakart', 1);
 
 -- --------------------------------------------------------
 
@@ -90,14 +94,20 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`image_id`, `product_id`, `image_path`) VALUES
-(1, 1, '110000048412270.jpg'),
-(2, 1, '110000048412271.jpg'),
-(3, 1, '110000048412272.jpg'),
-(4, 1, '110000048412272.jpg'),
-(5, 1, '110000048412277.jpg'),
-(6, 2, '110000040878548.jpg'),
-(7, 2, '110000040878750.jpg'),
-(8, 2, '110000040878752.jpg');
+(9, 4, '10983949893682.jpg'),
+(10, 4, '10983949926450.jpg'),
+(11, 4, '10983949959218.jpg'),
+(12, 4, '10983949991986.jpg'),
+(13, 4, '110000015075876.jpg'),
+(14, 5, '110000046078981.jpg'),
+(15, 5, '110000045841105.jpg'),
+(16, 5, '110000045841078.jpg'),
+(17, 6, '110000055071815.jpg'),
+(18, 6, '110000055071816.jpg'),
+(19, 6, '110000055071817.jpg'),
+(20, 6, '110000055071818.jpg'),
+(21, 7, '10481312104498.jpg'),
+(22, 8, '11259522908210.jpg');
 
 -- --------------------------------------------------------
 
@@ -116,11 +126,9 @@ CREATE TABLE `product_options` (
 --
 
 INSERT INTO `product_options` (`option_id`, `product_id`, `option_value`) VALUES
-(1, 2, 'XS'),
-(2, 2, 'S'),
-(3, 2, 'M'),
-(4, 2, 'L'),
-(5, 2, 'XL');
+(6, 5, 'Beyaz'),
+(7, 5, 'Gri'),
+(8, 5, 'Mavi');
 
 -- --------------------------------------------------------
 
@@ -135,6 +143,13 @@ CREATE TABLE `users` (
   `user_password` varchar(255) NOT NULL,
   `user_register_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Tablo döküm verisi `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_register_date`) VALUES
+(10, 'Emrecan Ünlü', 'unl.c.emre@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-05 14:41:32');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -178,31 +193,31 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_options`
 --
 ALTER TABLE `product_options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -158,6 +158,7 @@
                                 $('.order__total > p').html (response.prop.ara_toplam + ' TL');
                                 $('.order__kdv > p').html (response.prop.kdv + ' TL');
                                 $('.cart__total > p').html (response.prop.toplam + ' TL');
+                                $('.total__basket').html (response.prop.baet_total);
 
                                 toastr['success']('Başarılı', response.message);
 
