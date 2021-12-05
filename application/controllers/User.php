@@ -92,6 +92,8 @@
                             'login_time' => date('Y-m-d H:i:s')
                         ));
 
+                        $this -> session -> set_flashdata    ('login', 'Giriş başarılı, yüzlerce indirimli ürünler sizi bekliyor.');
+
                         redirect ( base_url());
 
                     } else {
@@ -121,6 +123,8 @@
 
                 $this -> session -> unset_userdata ('login_user');
                 
+                $this -> session -> set_flashdata ('logout', 'Güvenli bir şekilde çıkış yaptınız.');
+
                 redirect ( base_url ('giris-yap'));
 
             } else {
