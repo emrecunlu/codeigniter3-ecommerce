@@ -31,7 +31,7 @@
                             <a href="<?=base_url('sepet');?>">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 <span>SEPET</span>
-                                <div class="total__basket">0</div>
+                                <div class="total__basket"><?=$this -> cart -> total_items ();?></div>
                             </a>
                         </li>
                     </ul>
