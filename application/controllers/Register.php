@@ -8,6 +8,9 @@
             
             parent::__construct ();
 
+            if ( $this -> session -> has_userdata ('login_user'))
+                redirect ( base_url('hesap-ayarlari'));
+
         }
 
         public function index ()

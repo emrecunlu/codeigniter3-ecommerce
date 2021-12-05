@@ -121,11 +121,13 @@
 
             if ( $this -> session -> has_userdata ('login_user')) {
 
-                $this -> session -> unset_userdata ('login_user');
-                
                 $this -> session -> set_flashdata ('logout', 'Güvenli bir şekilde çıkış yaptınız.');
 
+                $this -> session -> unset_userdata ('login_user');
+
                 redirect ( base_url ('giris-yap'));
+
+                exit ;
 
             } else {
 

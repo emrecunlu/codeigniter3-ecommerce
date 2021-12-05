@@ -18,6 +18,70 @@
 
         }
 
+        public function update_basket ()
+        {
+
+            if ( $this -> input -> method ('REQUEST_METOHD') == 'POST') {
+                
+                $rowid = html_escape( $this -> input -> post ('rowid'));
+                $item_qty = html_escape( $this -> input -> post ('itemQty'));
+                
+                $update_item = array (
+                    'rowid' => $rowid,
+                    'qty' => $item_qty
+                );
+
+                if ( $this -> cart -> get_item ($rowid)) {
+
+                    if ( $item_qty <= 0) {
+
+                        if ( $this -> cart -> remove ($rowid)) {
+                            
+                            echo json_encode( array (
+                                'status' => 'refresh',
+                                'message' => 'Ürün başarıyla silindi!'
+                            ));
+        
+                            exit ;
+
+                        }
+
+                    } else {
+
+                        if ( $this -> cart -> update ($update_item)) {
+
+                            echo json_encode( array (
+                                'status' => 'OK',
+                                'message' => 'Ürününüz güncellendi.',
+                                'prop' => array (
+                                    'ara_toplam' => number_format($this -> cart -> total () - $this -> cart -> total () * 18 / 100, 2, ',', '.'),
+                                    'kdv' => number_format($this -> cart -> total () * 18 / 100, 2, ',',),
+                                    'toplam' => number_format($this -> cart -> total (), 2, ',', '.'),
+                                    'urun_toplam' => number_format($this -> cart -> get_item ($rowid)['subtotal'], 2, ',', '.')
+                                )
+                            ));
+        
+                            exit ;
+
+                        }
+
+                    }
+
+                } else {
+
+                    echo json_encode( array (
+                        'status' => 'error',
+                        'message' => 'Geçersize ürün.'
+                    ));
+
+                    exit ;
+ 
+                }
+
+            }
+
+        }
+
         public function add_basket ()
         {
 

@@ -105,6 +105,11 @@
             </div>
         </div>
     </section>
+    <div class="backdrop">
+        <div class="spinner-grow text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
     <input type="hidden" id="product-id" value="<?=$this -> encryption -> encrypt ($product -> product_id)?>">
     <?php $this -> load -> view ('includes/scripts'); ?>
     <script>
@@ -171,6 +176,11 @@
                 },
                 dataType: 'JSON',
 
+                beforeSend: function () {
+
+                    $('.backdrop').addClass('active');     
+
+                },
                 success: function ( response) {
 
                     toastr.options = {
@@ -202,6 +212,13 @@
                         toastr["danger"](response.message, "Hata!");
 
                     }
+
+                    setTimeout(function () {
+
+                        $('.backdrop').removeClass('active'); 
+
+                    }, 800) ;
+
                 }
             })
 
