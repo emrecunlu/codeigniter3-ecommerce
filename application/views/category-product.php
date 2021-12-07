@@ -10,55 +10,8 @@
 <body>
 <?php $this -> load -> view ('includes/header'); ?>
 <?php $this -> load -> view ('includes/navbar'); ?>
-    <div class="body">
-        <section id="slider" class="py-4">
-            <div class="container">
-                <div class="swiper thumbs-gallery">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="https://cdn.vatanbilgisayar.com/Upload/BANNER//yeni-tasarim/anasayfa/10-2021/asus-notebook-1-11-ILAN_WEB.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://cdn.vatanbilgisayar.com/Upload/BANNER//yeni-tasarim/anasayfa/10-2021/philips-20-10-ILAN_WEB.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://cdn.vatanbilgisayar.com/Upload/BANNER//yeni-tasarim/anasayfa/10-2021/1336x380-Vatan.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://cdn.vatanbilgisayar.com/Upload/BANNER//yeni-tasarim/anasayfa/10-2021/Vatan_iPad_mini_Web.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://cdn.vatanbilgisayar.com/Upload/BANNER//yeni-tasarim/anasayfa/10-2021/asus-notebook-1-11-ILAN_WEB.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://cdn.vatanbilgisayar.com/Upload/BANNER//yeni-tasarim/anasayfa/10-2021/philips-20-10-ILAN_WEB.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://cdn.vatanbilgisayar.com/Upload/BANNER//yeni-tasarim/anasayfa/10-2021/1336x380-Vatan.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://cdn.vatanbilgisayar.com/Upload/BANNER//yeni-tasarim/anasayfa/10-2021/Vatan_iPad_mini_Web.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-pagination-mb"></div>
-                </div>
-            </div>
-        </section>
-        <section id="products" style="padding: 50px 0;">
-            <div class="container">
-                <div class="product__list">
-                    <span>Günün Fırsatları</span>
-                    <div class="all__products">
-                        <a href="#">TÜM FIRSAT ÜRÜNLERİ
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            <?php $this -> load -> view ('includes/all_products') ?>
-            </div>
-        </section>
-        <section id="best-seller">
+    <div class="body py-4">
+    <section id="best-seller">
             <div class="container">
                 <div class="title">
                     <p>En Çok Satan Ürünler</p>
@@ -99,6 +52,20 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section id="products" style="padding: 50px 0;">
+            <div class="container">
+                <div class="product__list">
+                    <span><?=$category_name;?></span>
+                    <div class="all__products">
+                        <a href="#">TÜM FIRSAT ÜRÜNLERİ
+                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            <?php $this -> load -> view ('includes/all_products') ?>
+            <?php echo $links; ?>
             </div>
         </section>
     </div>

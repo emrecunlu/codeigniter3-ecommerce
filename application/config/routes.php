@@ -56,4 +56,6 @@ $route['giris-yap'] = 'login';
 $route['kayit-ol'] = 'register';
 $route['sepet'] = 'basket';
 $route['hesap-ayarlari'] = 'UserSettings';
+$route['kategori/(:any)'] = 'category/index/$1';
+$route['kategori/(:any)/(:num)'] = 'category/index/$1';
 $route['([a-z0-9-]+)'] = 'product/index/$1';

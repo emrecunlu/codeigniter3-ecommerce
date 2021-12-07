@@ -96,7 +96,8 @@ $autoload['drivers'] = array();
 $autoload['helper'] = array(
     'url',
     'form',
-    'security'
+    'security',
+    'my_helper'
 );
 
 /*
@@ -141,5 +142,5 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
-    'Categories_model' => 'categories'
+    'Categories_model' => 'categories',
 );

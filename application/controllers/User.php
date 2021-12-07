@@ -205,6 +205,13 @@
                             $this -> session -> set_flashdata ('success', '<li>Şifreniz değişti, Lütfen yeniden giriş yapınız.</li>');
 
                             $this -> logout();
+
+                        } else {
+
+                             $this -> session -> set_flashdata ('error', '<li>Lütfen yeni bir şifre</li>');
+
+                            redirect (base_url('hesap-ayarlari'));
+
                         }
 
                     } else {

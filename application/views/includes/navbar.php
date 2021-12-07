@@ -16,9 +16,7 @@
                     <ul>
                         <?php foreach ($this -> categories -> get_all() as $category) : ?>
                         <li>
-                            <a href="<?=base_url('kategori/' . strtolower($category -> category_name));?>">
-                                <?=$category -> category_name;?>
-                            </a>
+                            <a href="<?=base_url('kategori/' . $category -> category_url);?>"><?=$category -> category_name;?></a>
                         </li>
                         <?php endforeach; ?>
                     </ul>

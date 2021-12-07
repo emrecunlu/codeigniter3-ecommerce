@@ -23,6 +23,16 @@
 
         }
 
+        public function get ($where)
+        {
+        
+            $category = $this -> db
+                              -> get_where ($this -> table_name, $where);
+                              
+            return $category;
+
+        }
+
     }
 
 ?>
