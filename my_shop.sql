@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 05 Ara 2021, 15:44:20
+-- Üretim Zamanı: 08 Ara 2021, 00:29:57
 -- Sunucu sürümü: 10.4.22-MariaDB
 -- PHP Sürümü: 8.0.13
 
@@ -29,25 +29,26 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
-  `category_name` varchar(255) NOT NULL
+  `category_name` varchar(255) NOT NULL,
+  `category_url` varchar(524) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Tablo döküm verisi `categories`
 --
 
-INSERT INTO `categories` (`category_id`, `category_name`) VALUES
-(10, 'Telefon'),
-(11, 'Bilgisayar'),
-(12, 'Tv, Ev Elektroniği'),
-(13, 'Bilgisayar Parçaları'),
-(14, 'Foto, Kamera'),
-(15, 'Ofis, Kırtasiye'),
-(16, 'Aksesuar'),
-(17, 'Oyun, Hobi'),
-(18, 'Ev, Mutfak'),
-(19, 'Kişisel Bakım'),
-(20, 'Spor, Outdoor');
+INSERT INTO `categories` (`category_id`, `category_name`, `category_url`) VALUES
+(10, 'Telefon', 'telefon'),
+(11, 'Bilgisayar', 'bilgisayar'),
+(12, 'Tv, Ev Elektroniği', 'tv-ev-elektronigi'),
+(13, 'Bilgisayar Parçaları', 'bilgisayar-parcalari'),
+(14, 'Foto, Kamera', 'foto-kamera'),
+(15, 'Ofis, Kırtasiye', 'ofis-kirtasiye'),
+(16, 'Aksesuar', 'aksesuar'),
+(17, 'Oyun, Hobi', 'oyun-hobi'),
+(18, 'Ev, Mutfak', 'ev-mutfak'),
+(19, 'Kişisel Bakım', 'kisisel-bakim'),
+(20, 'Spor, Outdoor', 'spor-outdoor');
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,10 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `category
 (5, 'Xiaomi Redmi Note 10S 128 GB 6 GB Ram (Xiaomi Türkiye Garantili)', '4069.00', 10, '110000045850384.jpg', '2021-12-05 14:27:33', 'xiaomi-redmi-note-10s-128-gb-6-gb-ram-xiaomi-turkiye-garantili', 1),
 (6, 'Msı Rtx 3060 Ti Gamıng Z Trıo Lhr 8gb Gddr6 256BIT Ekran Kartı RTX-3060-TI-GAMING-Z-TRIO-8G-LHR', '21664.09', 13, '110000055071814.jpg', '2021-12-05 14:28:26', 'msi-rtx-3060-ti-gaming-z-trio-lhr-8gb-gddr6-256bit-ekran-karti-rtx-3060-ti-gaming-z-trio-8g-lhr', 1),
 (7, 'Yüzüklerin Efendisi 3 Cilt Takım (Yüzük Kardeşliği, İki Kule, Kralın Dönüşü)\r\n', '189.90', 15, '10481312071730.jpg', '2021-12-05 14:29:57', 'yuzuklerin-efendisi-3-cilt-takim-yuzuk-kardesligi-iki-kule-kralin-donusu', 1),
-(8, 'MSI B450M Bazooka AM4 DDR4 3466 (OC )HDMI M.2 USB3.2 WIFI MATX Anakart\r\n', '1009.62', 13, '11259522875442.jpg', '2021-12-05 14:31:08', 'msi-b450m-bazooka-am4-ddr4-3466-oc-hdmi-m2-usb32-wifi-matx-anakart', 1);
+(8, 'MSI B450M Bazooka AM4 DDR4 3466 (OC )HDMI M.2 USB3.2 WIFI MATX Anakart\r\n', '1009.62', 13, '11259522875442.jpg', '2021-12-05 14:31:08', 'msi-b450m-bazooka-am4-ddr4-3466-oc-hdmi-m2-usb32-wifi-matx-anakart', 1),
+(9, 'ASUS ROG STRIX Z690 Intel 6400MHz DDR5 LGA1700 ATX Anakart ROG STRIX Z690-F GAMING WIFI\r\n', '9177.78', 13, '110000087968069.jpg', '2021-12-07 22:29:17', 'asus-rog-strix-z690-intel-6400mhz-ddr5-lga1700-atx-anakart-rog-strix-z690-f-gaming-wifi', 1),
+(10, 'Corsair Vengeance RGB Pro 16GB (2x8GB) 3600MHz DDR4 Ram CMW16GX4M2Z3600C18\r\n', '1599.00', 13, '10336656261170.jpg', '2021-12-07 22:31:10', 'corsair-vengeance-rgb-pro-16gb-2x8gb-3600mhz-ddr4-ram-cmw16gx4m2z3600c18', 1),
+(11, 'Amd Ryzen 5 5600X 3.7ghz 35MB Cache Soket Am4 Işlemci', '4398.99', 13, '10938125287474.jpg', '2021-12-07 23:17:13', 'amd-ryzen-5-5600x-37ghz-35mb-cache-soket-am4-islemci', 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +111,16 @@ INSERT INTO `product_images` (`image_id`, `product_id`, `image_path`) VALUES
 (19, 6, '110000055071817.jpg'),
 (20, 6, '110000055071818.jpg'),
 (21, 7, '10481312104498.jpg'),
-(22, 8, '11259522908210.jpg');
+(22, 8, '11259522908210.jpg'),
+(24, 9, '110000087968070.jpg'),
+(25, 9, '110000087968071.jpg'),
+(26, 9, '110000087968072.jpg'),
+(27, 9, '110000087968073.jpg'),
+(28, 10, '10336656293938.jpg'),
+(29, 10, '10336656326706.jpg'),
+(30, 10, '10336656359474.jpg'),
+(31, 11, '10938125320242.jpg'),
+(32, 11, '10938125353010.jpg');
 
 -- --------------------------------------------------------
 
@@ -149,7 +162,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_register_date`) VALUES
-(10, 'Emrecan Ünlü', 'unl.c.emre@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-05 14:41:32');
+(14, 'Emrecan Ünlü', 'unl.c.emre@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-07 21:33:17');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -199,13 +212,13 @@ ALTER TABLE `categories`
 -- Tablo için AUTO_INCREMENT değeri `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_options`
@@ -217,7 +230,7 @@ ALTER TABLE `product_options`
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
