@@ -185,7 +185,7 @@
             if ( $this -> input -> method ('REQUEST_METHOD') == 'POST')
             {
 
-                $this -> form_validation -> set_rules ('user_oldpassword', 'Şifreniz', 'required|trim|min_length[3]|max_length[50]');
+                $this -> form_validation -> set_rules ('user_password', 'Şifreniz', 'required|trim|min_length[3]|max_length[50]');
 
                 if ( $this -> form_validation -> run () == TRUE) {
 
