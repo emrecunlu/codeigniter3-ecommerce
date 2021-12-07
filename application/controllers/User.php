@@ -137,11 +137,95 @@
 
         }
 
-        public function change ($data)
+        public function change_name ()
         {
 
+            if ( $this -> input -> method ('REQUEST_METHOD') == 'POST')
+            {
+
+                $this -> form_validation -> set_rules ('user_name', 'İsminiz', 'required|trim|min_length[5]|max_length[50]');
+
+                if ( $this -> form_validation -> run () == TRUE) {
+
+                    $user_name = html_escape( $this -> input -> post ('user_name', true));
+
+                    if ( $this -> user -> update ( $this -> session -> userdata('login_user')['user_id'], array (
+                        'user_name' => $user_name
+                    ))) {
+
+                        $this -> session -> set_flashdata ('success', '<li>İsminiz başarıyla değişti.</li>');
+
+                        redirect (base_url('hesap-ayarlari'));
+
+                    } else {
+
+                        $this -> session -> set_flashdata ('error', '<li>Lütfen yeni bir isim giriniz.</li>');
+
+                        redirect (base_url('hesap-ayarlari'));
+                        
+                    }
 
 
+                } else {
+
+                    $this -> session -> set_flashdata ('error', validation_errors('<li>', '</li>'));
+
+
+                    redirect (base_url('hesap-ayarlari'));
+
+                }
+
+            }
+
+        }
+
+        public function change_password ()
+        {
+
+            if ( $this -> input -> method ('REQUEST_METHOD') == 'POST')
+            {
+
+                $this -> form_validation -> set_rules ('user_oldpassword', 'Şifreniz', 'required|trim|min_length[3]|max_length[50]');
+
+                if ( $this -> form_validation -> run () == TRUE) {
+
+                    $user_data = html_escape( xss_clean(array (
+                        'user_oldpassword' => sha1($this -> input -> post ('user_oldpassword')),
+                        'user_newpassword' => $this -> input -> post ('user_password'),
+                    )));
+
+                    $user = $this -> user -> get (['user_id' => $this -> session -> userdata ('login_user')['user_id']]) -> row ();
+
+                    if ( $user -> user_password == $user_data ['user_oldpassword']) {
+
+                        if ( $this -> user -> update ($user -> user_id, array (
+                            'user_password' => sha1($user_data ['user_newpassword'])
+                        ))) {
+
+                            $this -> session -> set_flashdata ('success', '<li>Şifreniz değişti, Lütfen yeniden giriş yapınız.</li>');
+
+                            $this -> logout();
+                        }
+
+                    } else {
+
+                        $this -> session -> set_flashdata ('error', '<li>Şifre eski şifreniz ile eşleşmiyor.</li>');
+
+                        redirect (base_url('hesap-ayarlari'));
+
+                    }
+
+                } else {
+
+                    $this -> session -> set_flashdata ('error', validation_errors('<li>', '</li>'));
+
+
+                    redirect (base_url('hesap-ayarlari'));
+
+                }
+
+            }
+            
         }
 
     }

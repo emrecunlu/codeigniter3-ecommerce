@@ -34,6 +34,19 @@
 
         }
 
+        public function update ($id, $data)
+        {
+
+            $update_user = $this -> db
+                                 -> where ('user_id', $id)
+                                 -> update ($this -> table_name, $data);
+
+            if ( $this -> db -> affected_rows () > 0) return true;
+
+            return false;
+
+        }
+
     }
 
 ?>

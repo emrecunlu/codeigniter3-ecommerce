@@ -34,32 +34,33 @@
                         <h1>Üyelik Bilgilerim</h1>
                     </div>
                     <div class="detail__form">
-                        <form action="#" method="post">
-                            <div class="group__flex">
-                                <div class="input__group">
-                                    <label for="user-name">İsim Soyisim</label>
-                                    <input type="text" name="user_name" id="user-name" value="<?=$user -> user_name;?>">
-                                </div>
-                                <div class="input__group">
-                                    <label for="user_email">E-Mail</label>
-                                    <input type="text" name="user_email" id="user_email" value="<?=$user -> user_email;?>" disabled>
-                                </div>
+                        <?php echo form_open(base_url('user/change_name'));?>
+                        <?php $this -> load -> view ('includes/msg_error'); ?>
+                        <div class="group__flex">
+                            <div class="input__group">
+                                <label for="user-name">İsim Soyisim</label>
+                                <input type="text" name="user_name" id="user-name" value="<?=$user -> user_name;?>">
                             </div>
-                            <button type="submit">BİLGİLERİMİ KAYDET</button>
-                        </form>
-                        <form action="#" method="post">
-                            <div class="group__flex">
-                                <div class="input__group">
-                                    <label for="">Eski Şifreniz</label>
-                                    <input type="text" name="" id="" placeholder="Eski Şifreniz">
-                                </div>
-                                <div class="input__group">
-                                    <label for="user-oldpassword">Yeni Şifreniz</label>
-                                    <input type="text" name="user-oldpassword" id="user-oldpassword" placeholder="Yeni Şifreniz">
-                                </div>
+                            <div class="input__group">
+                                <label for="user_email">E-Mail</label>
+                                <input type="text" name="user_email" id="user_email" value="<?=$user -> user_email;?>" disabled>
                             </div>
-                            <button type="submit">ŞİFRE DEĞİŞTİR</button>
-                        </form>
+                        </div>
+                        <button type="submit">BİLGİLERİMİ KAYDET</button>
+                        <?php echo form_close(); ?>
+                        <?php echo form_open(base_url('user/change_password')); ?>
+                        <div class="group__flex">
+                            <div class="input__group">
+                                <label for="user_oldpassword">Eski Şifreniz</label>
+                                <input type="password" name="user_oldpassword" id="user_oldpassword" placeholder="Eski Şifreniz">
+                            </div>
+                            <div class="input__group">
+                                <label for="user_password">Yeni Şifreniz</label>
+                                <input type="password" name="user_password" id="user_oldpassword" placeholder="Yeni Şifreniz">
+                            </div>
+                        </div>
+                        <button type="submit">ŞİFRE DEĞİŞTİR</button>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>
