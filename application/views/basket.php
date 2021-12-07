@@ -69,7 +69,7 @@
                         </div>
                         <div class="order__kdv">
                             <h1>KDV</h1>
-                            <p><?=number_format($this -> cart -> total () * 18 / 100, 2, ',',) ?> TL</p>
+                            <p><?=number_format($this -> cart -> total () * 18 / 100, 2, ',', '.') ?> TL</p>
                         </div>
                         <div class="cart__total">
                             <h1>Toplam</h1>

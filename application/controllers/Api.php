@@ -55,7 +55,7 @@
                                 'message' => 'Ürününüz güncellendi.',
                                 'prop' => array (
                                     'ara_toplam' => number_format($this -> cart -> total () - $this -> cart -> total () * 18 / 100, 2, ',', '.'),
-                                    'kdv' => number_format($this -> cart -> total () * 18 / 100, 2, ',',),
+                                    'kdv' => number_format($this -> cart -> total () * 18 / 100, 2, ',', '.'),
                                     'toplam' => number_format($this -> cart -> total (), 2, ',', '.'),
                                     'urun_toplam' => number_format($this -> cart -> get_item ($rowid)['subtotal'], 2, ',', '.'),
                                     'basket_total' => $this -> cart -> total_items ()

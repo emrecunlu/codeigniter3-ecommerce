@@ -131,9 +131,16 @@
 
             } else {
 
-                show_404();
+                print_r ( $this -> session -> get_userdata ());
 
             }
+
+        }
+
+        public function change ($data)
+        {
+
+
 
         }
 
