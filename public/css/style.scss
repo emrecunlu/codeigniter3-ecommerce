@@ -918,6 +918,18 @@ section#best-seller {
         }
     }
 }
+ul.pagination {
+    li {
+        &.active {
+            a {
+                background-color: #234775;
+            }
+        }
+        a {
+            padding: 10px 20px;
+        }
+    }
+}
 .backdrop {
     overflow-y: hidden;
     width: 100%;

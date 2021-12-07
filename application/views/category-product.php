@@ -76,6 +76,10 @@
             loop: true,
             slidesPerView: 'auto',
             spaceBetween: 20,
+            autoplay: {
+                delay: 5000,
+            },
+            freeMode: true
         });
     </script>
     <?php if ( $this -> session -> flashdata ('login')) : ?>

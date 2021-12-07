@@ -1,7 +1,7 @@
 <?php 
 
     $config['use_page_numbers'] = TRUE;
-    $config['full_tag_open'] = '<ul class="pagination pagination-lg justify-content-center pt-5 pb-3">';
+    $config['full_tag_open'] = '<ul class="pagination justify-content-center pt-5 pb-3">';
     $config['full_tag_close'] = '</ul>';
     $config['attributes'] = ['class' => 'page-link'];
     $config['first_link'] = false;
