@@ -30,50 +30,33 @@
                     </ul>
                 </div>
                 <div class="detail__contents">
+                    <?php $this -> load -> view ('includes/msg_error'); ?>
                     <div class="detail__title">
                         <h1>Adress Bilgilerim</h1>
                     </div>
-                    <div class="user__adress">
-                        <form action="" method="post">
-                            <div class="input__group">
-                                <label for="">Adres Başlığı</label>
-                                <input type="text" name="" id="">
-                            </div>
-                            <div class="flex__group">
-                                <div class="input__group">
-                                    <label for="">İsim Soyisim</label>
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="input__group">
-                                    <label for="">Cep Telefonu</label>
-                                    <input type="text" name="" id="">
-                                </div>
-                            </div>
-                            <div class="flex__group">
-                                <div class="input__group">
-                                    <label for="">Şehir</label>
-                                    <select name="user_city" id="user-city">
-                                        <option value="">Şehir seçiniz...</option>
-                                        <?php foreach ($cities as $city) : ?>
-                                        <option value="<?=$city -> sehir_key?>"><?=$city -> sehir_title;?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="input__group">
-                                    <label for="">İlçe</label>
-                                    <select name="user_district" id="user-district">
-                                        <option value="" class="default-option">İlçe seçiniz...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" name="add_adress">EKLE</button>
-                        </form>
+                    <?php $this -> load -> view ('includes/adresses'); ?>
+                    <p>Adreslerinizi görüntüleyebilir, değişiklik yapabilir ve yeni adres ekleyebilirsiniz.</p>
+                    <div class="add-new__adress">
+                        <button type="button" class="pri__btn">Yeni Adres Ekle.</button>
                     </div>
+                    <?php $this -> load -> view ('includes/adress_form'); ?>
                 </div>
             </div>
         </div>
     </div>
     <?php $this -> load -> view ('includes/scripts'); ?>
+    <script>
+
+        $('#user-tc').inputmask({
+            'mask': '99999999999',
+            'removeMaskOnSubmit': true
+        });
+        $('#user-tel').inputmask({
+            'mask': '(999) 999-9999',
+            'removeMaskOnSubmit': true
+        });
+
+    </script>
     <script>
 
         function removeCounties ()
@@ -85,7 +68,7 @@
 
         $('#user-city').change( function () {
 
-            let cityID = $(this).val().trim();
+            let cityID = $(this).find('option').filter(':selected').attr('city-key');
 
             if (cityID !== '') {
 
@@ -118,6 +101,15 @@
                 removeCounties();
 
             }
+
+        });
+
+    </script>
+    <script>
+
+        $('.pri__btn').click ( function () {
+
+            $('.user__adress').toggleClass('active');
 
         });
 

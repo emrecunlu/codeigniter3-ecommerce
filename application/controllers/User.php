@@ -10,6 +10,8 @@
 
             $this -> load -> model ('User_model', 'user');
 
+            $this -> load -> model ('Adress_model', 'adress');
+
             $this -> load -> helper ('date');
 
             $this -> load -> library ('form_validation');
@@ -234,6 +236,59 @@
             }
             
         }
+
+        public function add_adress ()
+        {
+
+            if ( $this -> input -> method ('REQUEST_METHOD') == 'POST') {
+
+                $this -> form_validation -> set_rules ('adress_title', 'Adres başlığınız', 'required|trim|min_length[2]|max_length[30]');
+
+                $this -> form_validation -> set_rules ('user_name', 'İsminiz', 'required|trim|min_length[3]|max_length[30]');
+
+                $this -> form_validation -> set_rules ('user_tel', 'Telefon numaranız', 'required|trim|regex_match[/[0-9]{10}/]');
+
+                $this -> form_validation -> set_rules ('user_city', 'Şehir', 'required|trim');
+
+                $this -> form_validation -> set_rules ('user_district', 'İlçe', 'required|trim');
+
+                $this -> form_validation -> set_rules ('user_adress', 'Adresiniz', 'required|trim|min_length[10]|max_length[255]');
+
+                $this -> form_validation -> set_rules ('user_tc', 'T.C Kimlik No', 'required|trim|regex_match[/[0-9]{11}/]');
+
+
+                if ( $this -> form_validation -> run () == TRUE) {
+
+                    $data = html_escape( $this -> security -> xss_clean (array (
+                        'user_id' => $this -> session -> userdata ('login_user')['user_id'],
+                        'adress_title' => $this -> input -> post ('adress_title'),
+                        'user_name' => $this -> input -> post ('user_name'),
+                        'user_tel' => $this -> input -> post ('user_tel	'),
+                        'user_city	' => $this -> input -> post ('user_city'),
+                        'user_district' => $this -> input -> post ('user_district'),
+                        'user_adress' => $this -> input -> post ('user_adress'),
+                        'user_tc' => $this -> input -> post ('user_tc'),
+                    )));
+
+                    if ( $this -> adress -> add ($data)) {
+
+                        $this -> session -> set_flashdata ('success', '<li>Adres başarıyla eklendi!</li>');
+
+                        redirect(base_url('adreslerim'));
+
+                    }
+
+                } else {
+
+                    $this -> session -> set_flashdata ('error', validation_errors('<li>', '</li>'));
+
+                    redirect(base_url('adreslerim'));
+
+                }
+
+            }
+
+         }
 
     }
 

@@ -2,6 +2,8 @@
 
     class UserSettings extends CI_Controller
     {
+        
+        private $user_id;
 
         public function __construct()
         {
@@ -15,14 +17,19 @@
 
              $this -> load -> model ('Place_model', 'place');
 
+             $this -> load -> model ('Adress_model', 'adress');
+
+             $this -> load -> library ('encryption');
+
+             $this -> user_id = $this -> session -> userdata ('login_user')['user_id'];
+
         }
 
         public function index ()
         {
-            
-            $user_id = $this -> session -> userdata ('login_user')['user_id'];
+        
 
-            $user = $this -> user -> get (array ('user_id' => $user_id)) -> row ();
+            $user = $this -> user -> get (array ('user_id' => $this -> user_id)) -> row ();
 
             $this -> load -> view ('user-detail', array (
                 'user' => $user
@@ -34,9 +41,11 @@
         {
 
             $cities = $this -> place -> get_cities ();
+            $adresses = $this -> adress -> get_all (array ('user_id' => $this -> user_id));
 
             $this -> load -> view ('user-adress', array (
-                'cities' => $cities
+                'cities' => $cities,
+                'adresses' => $adresses
             ));
 
         }

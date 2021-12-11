@@ -16,13 +16,13 @@
                 <div class="detail__tabs">
                     <ul>
                         <li class="active">
-                            <a href="<?=base_url('hesap-ayarlari');?>">Üyelik Bilgilerim</a>
+                            <a href="<?=base_url('hesap-ayarlari')?>">Üyelik Bilgilerim</a>
                         </li>
                         <li>
-                            <a href="#">Adres Bilgilerim</a>
+                            <a href="<?=base_url('adreslerim');?>">Adres Bilgilerim</a>
                         </li>
                         <li>
-                            <a href="#">Siparişlerim</a>
+                            <a href="<?=base_url('siparislerim');?>">Siparişlerim</a>
                         </li>
                         <li>
                             <a href="<?=base_url('user/logout');?>">Çıkış Yap</a>

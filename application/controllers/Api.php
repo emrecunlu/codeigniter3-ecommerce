@@ -150,7 +150,7 @@
 
         }
 
-        public function get_counties ($city_id)
+        public function get_counties ($city_id = null)
         {
 
             if ( isset ($city_id)) {
