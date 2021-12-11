@@ -13,6 +13,8 @@
             
              $this -> load -> model ('User_model', 'user');
 
+             $this -> load -> model ('Place_model', 'place');
+
         }
 
         public function index ()
@@ -24,6 +26,17 @@
 
             $this -> load -> view ('user-detail', array (
                 'user' => $user
+            ));
+
+        }
+
+        public function adress ()
+        {
+
+            $cities = $this -> place -> get_cities ();
+
+            $this -> load -> view ('user-adress', array (
+                'cities' => $cities
             ));
 
         }

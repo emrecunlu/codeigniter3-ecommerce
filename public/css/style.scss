@@ -575,11 +575,12 @@ section#products {
         margin-top: 10px;
     }
     .flex__group {
+        margin-top: 15px;
         display: flex;
         justify-content: space-between;
         gap: 20px;
         .input__group {
-            margin: 20px 0;
+            margin: 5px 0;
             width: 100%;
             input {
                 flex: 1;
@@ -593,7 +594,9 @@ section#products {
         font-size: 13px;
         font-weight: 500;
     }
-    input {
+    input,
+    select,
+    option{
         display: block;
         height: 50px;
         border: 1px solid #ccc;
@@ -607,7 +610,7 @@ section#products {
         border-radius: 4px;
         resize: none;
         padding: 10px;
-        height: 300px;
+        height: 150px;
     }
 }
 .product__inner {

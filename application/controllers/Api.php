@@ -8,6 +8,8 @@
             
             parent::__construct ();
 
+            $this -> load -> model ('Place_model', 'place');
+
             $this -> load -> model ('Product_model', 'product');
 
             $this -> load -> library ('form_validation');
@@ -143,6 +145,33 @@
                     exit ;
 
                 }
+
+            }
+
+        }
+
+        public function get_counties ($city_id)
+        {
+
+            if ( isset ($city_id)) {
+
+                $city_id = html_escape( $this -> security -> xss_clean ($city_id));
+
+                $counties = $this -> place -> get_counties ($city_id);
+
+                echo json_encode( array (
+                    'status' => 'OK',
+                    'counties' => $counties
+                ));
+
+                exit ;
+
+            } else {
+
+                echo json_encode(array (
+                    'status' => 'error',
+                    'message' => 'not found city id'
+                ));
 
             }
 
