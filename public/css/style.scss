@@ -86,37 +86,6 @@ header#header {
                 width: 150px;
             }
         }
-        .search__bar {
-            background: #F7F7F7;
-            width: 100%;
-            max-width: 500px;
-            height: 50px;
-            border-radius: 24px;
-            form {
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                input {
-                    padding: 0 20px;
-                    background: transparent;
-                    width: 100%;
-                    height: 100%;
-                    font-size: 14px;
-                    &::placeholder {
-                        color: #ccc;
-                    }
-                }
-                button {
-                    height: 100%;
-                    width: 80px;
-                    background: transparent;
-                    i {
-                        font-size: 14px;
-                    }
-                }
-            }
-        }
         .user__items {
             ul {
                 display: flex;
@@ -1117,9 +1086,6 @@ ul.pagination {
             width: 100%;
         }
     }
-    .body {
-        margin: 70px 0;
-    }
     nav#navbar {
         height: 100%;
         width: 100%;
@@ -1180,13 +1146,6 @@ ul.pagination {
                 img {
                     width: 120px;
                 }
-            }
-            .search__bar {
-                position: absolute;
-                top: 100px;
-                left: 50%;
-                max-width: 568px;
-                transform: translateX(-50%);
             }
             .user__items {
                 ul {

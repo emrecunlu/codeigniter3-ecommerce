@@ -11,7 +11,7 @@
 <?php $this -> load -> view ('includes/header') ?>
 <?php $this -> load -> view ('includes/navbar') ?>
     <div class="body pt-1 pt-xl-0">
-        <div class="container my-5">
+        <div class="container my-xl-5 my-0">
             <div class="user__detail">
                 <div class="detail__tabs">
                     <ul>

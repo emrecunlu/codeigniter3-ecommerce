@@ -5,7 +5,7 @@
                     <div class="login__in">
                         <a href="<?=base_url('giris-yap');?>">
                             <i class="fa fa-user"></i>
-                            <span>Giriş Yap</span>
+                            <span><?=$this -> session -> has_userdata ('login_user') === true ? 'Hesabım' : 'Giriş Yap';?></span>
                         </a>
                     </div>
                     <div class="close">
