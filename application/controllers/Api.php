@@ -108,12 +108,13 @@
                         'option_id' => $data ['option']
                     ));
 
-                    $option = !empty($option) ? $option[0] -> option_value : '';
+                    $option = !empty($option) ? $option[0] -> option_value : null;
 
                     $cart_item = array (
                         'id' => 'sku_' . $product -> product_id . '_' . $data ['option'],
                         'qty' => 1,
                         'price' => $product -> product_price,
+                        'product_id' => $data ['id'],
                         'name' => $product -> product_name,
                         'image' => $product -> product_image,
                         'options' => array (

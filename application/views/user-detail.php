@@ -19,13 +19,13 @@
                             <a href="<?=base_url('hesap-ayarlari')?>">Üyelik Bilgilerim</a>
                         </li>
                         <li>
-                            <a href="<?=base_url('adreslerim');?>">Adres Bilgilerim</a>
+                            <a href="<?=base_url('adreslerim')?>">Adres Bilgilerim</a>
                         </li>
                         <li>
-                            <a href="<?=base_url('siparislerim');?>">Siparişlerim</a>
+                            <a href="<?=base_url('siparislerim')?>">Siparişlerim</a>
                         </li>
                         <li>
-                            <a href="<?=base_url('user/logout');?>">Çıkış Yap</a>
+                            <a href="<?=base_url('user/logout')?>">Çıkış Yap</a>
                         </li>
                     </ul>
                 </div>

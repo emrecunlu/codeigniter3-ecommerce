@@ -11,14 +11,6 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/BEAT_Cycling_logo.png" alt="">
                     </a>
                 </div>
-                <div class="search__bar">
-                    <form action="" method="get">
-                        <input type="text" name="search-bar" id="search-bar" placeholder="Aramak istediğiniz ürünü yazınız.">
-                        <button type="submit">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </form>
-                </div>
                 <div class="user__items">
                     <ul>
                         <li class="active">

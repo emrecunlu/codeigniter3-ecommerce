@@ -116,5 +116,6 @@
         toastr['success']('Giriş Başarılı.', '<?=$this -> session -> flashdata ("success");?>')
     </script>
     <?php endif; ?>
+    <?php $this -> load -> view ('includes/payment_messages'); ?>
 </body>
 </html>

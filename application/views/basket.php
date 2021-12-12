@@ -76,7 +76,9 @@
                             <p><?=number_format($this -> cart -> total (), 2, ',', '.');?> TL</p>
                         </div>
                         <div class="cart__success">
-                            <button type="button">Sepeti Onayla</button>
+                            <a href="<?=base_url('siparisi-tamamla');?>">
+                                <button type="button">Sepeti Onayla</button>
+                            </a>
                         </div>
                     </div>
                 </div>

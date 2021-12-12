@@ -48,6 +48,18 @@
 
         }
 
+        public function delete ($where)
+        {
+
+            $delete = $this -> db 
+                            -> delete ( $this -> table_name, $where);
+
+            if ( $this -> db -> affected_rows () > 0 ) return true;
+
+            return false;
+
+        }
+
     }
 
 ?>
