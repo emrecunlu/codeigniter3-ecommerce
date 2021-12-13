@@ -58,6 +58,7 @@ $route['sepet'] = 'basket';
 $route['hesap-ayarlari'] = 'UserSettings/index';
 $route['adreslerim'] = 'UserSettings/adress';
 $route['siparisi-tamamla'] = 'Payment';
+$route['siparislerim'] = 'UserSettings/list_orders';
 $route['kategori/(:any)'] = 'category/index/$1';
 $route['kategori/(:any)/(:num)'] = 'category/index/$1';
 $route['([a-z0-9-]+)'] = 'product/index/$1';

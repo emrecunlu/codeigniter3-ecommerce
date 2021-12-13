@@ -21,6 +21,8 @@
 
              $this -> load -> library ('encryption');
 
+             $this -> load -> helper ('date');
+
              $this -> user_id = $this -> session -> userdata ('login_user')['user_id'];
 
         }
@@ -34,6 +36,17 @@
             $this -> load -> view ('user-detail', array (
                 'user' => $user
             ));
+
+        }
+
+        public function list_orders ()
+        {
+
+            $this -> load -> model ('Orders_model', 'orders');
+
+            $data ['orders'] = $this -> orders -> get_all (array ('user_id' => $this -> session -> userdata('login_user')['user_id']));
+
+            $this -> load -> view ('orders', $data);
 
         }
 
