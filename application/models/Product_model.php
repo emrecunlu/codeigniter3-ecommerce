@@ -16,11 +16,37 @@
         {
 
             $product = $this -> db
-                             -> select ('products.product_id, products.product_name, products.product_price, products.product_image, products.product_url, categories.category_name')
+                             -> select ('products.product_id, products.product_name, products.product_price, products.product_image, products.product_url, categories.category_name, categories.category_id, products.is_live')
                              -> join ('categories', 'categories.category_id = products.category_id', 'join')  
                              -> get_where ($this -> table_name, $where);
                              
             return $product;
+
+        }
+
+        public function update ( $product_id, $data)
+        {
+
+            $upload = $this -> db
+                            -> where ( 'product_id', $product_id)
+                            -> update ( $this -> table_name, $data);
+
+            if ( $this -> db -> affected_rows() > 0) return true;
+
+            return false;
+
+        }
+
+        public function delete ( $product_id)
+        {
+
+            $delete = $this -> db
+                            -> where ( 'product_id', $product_id)
+                            -> delete ( $this -> table_name);
+
+            if ( $this -> db -> affected_rows() > 0) return true;
+
+            return false;
 
         }
 

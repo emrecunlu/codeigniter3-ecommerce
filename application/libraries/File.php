@@ -20,26 +20,22 @@
 
         }
 
-        public function delete ($config = array ())
+        public function delete ()
         {
 
-            if ( !empty( $this -> config)) {
+            $config = $this -> config;
 
-                $config = $this -> config;
+            $file = $config ['path'] . '/' . $config ['file_name'];
 
-                $file = $config ['path'] . '/' . $config ['file_name'];
+            if ( file_exists( $file)) {
 
-                if ( file_exists( $file)) {
-
-                    if ( unlink($file)) return true;
-
-                    else return false;
-
-                }
+                if ( unlink($file)) return true;
 
                 else return false;
 
-            } else return false;
+            }
+
+            else return false;
 
         }
 

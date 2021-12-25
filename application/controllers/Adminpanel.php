@@ -31,7 +31,10 @@
 
             $this -> load -> model ('Product_model', 'product');
 
+            $this -> load -> model ('Categories_model', 'categories');
+
             $data ['products'] = $this -> product -> get_all ();
+            $data ['categories'] = $this -> categories -> get_all ();
 
             $this -> load -> view ('adminpanel/all-products', $data);
 

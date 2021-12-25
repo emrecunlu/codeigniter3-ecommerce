@@ -458,7 +458,9 @@ $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array(
     'api/add_basket',
     'api/update_basket',
-    'payment/new_payment/.*?'
+    'payment/new_payment/.*?',
+    'admin/get_product',
+    'admin/delete'
 );
 
 /*
