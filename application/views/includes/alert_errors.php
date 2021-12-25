@@ -20,5 +20,5 @@
 <div class="alert alert-danger">
     <h5 class="alert-title"><i class="fas fa-exclamation-triangle"></i> Hata</h5>
     <?=$this -> session -> flashdata ('alert_danger');?>
-</div>
+</div>  
 <?php endif; ?>
