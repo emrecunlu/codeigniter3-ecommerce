@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/PHP-Codeigniter-ecommerce-website/';
+$config['base_url'] = 'http://localhost/e-commerce/';
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +77,8 @@ $config['url_suffix'] = '';
 |
 */
 $config['language']	= 'turkish';
+
+setlocale(LC_TIME,"turkish");
 
 /*
 |--------------------------------------------------------------------------
@@ -455,7 +457,8 @@ $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array(
     'api/add_basket',
-    'api/update_basket'
+    'api/update_basket',
+    'payment/new_payment/.*?'
 );
 
 /*

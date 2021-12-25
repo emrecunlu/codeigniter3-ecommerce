@@ -97,7 +97,10 @@ $autoload['helper'] = array(
     'url',
     'form',
     'security',
-    'my_helper'
+    'my_helper',
+    'string',
+    'text',
+    'date'
 );
 
 /*

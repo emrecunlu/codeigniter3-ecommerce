@@ -24,11 +24,23 @@
 
         }
 
+        public function insert ( $data)
+        {
+
+            $add = $this -> db
+                         -> insert ( $this -> table_name, $data);
+
+            if ( $this -> db -> affected_rows() > 0) return true;
+
+            return false;
+
+        }
+
         public function get_all ($where = array (), $limit = null, $start = null)
         {
 
             $products = $this -> db
-                              -> select ('products.product_id, products.product_name, products.product_price, products.product_image, products.product_url, categories.category_name')
+                              -> select ('products.product_id, products.product_name, products.product_price, products.product_image, products.product_url, categories.category_name, products.is_live')
                               -> join ('categories', 'categories.category_id = products.category_id', 'join')  
                               -> limit ($limit, $start)
                               -> order_by ('products.product_id', 'DESC')

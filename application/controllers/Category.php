@@ -37,7 +37,7 @@
 
                 $config['base_url'] = base_url('kategori/' . $category -> category_url);
                 $config['total_rows'] = $this -> product -> get_count($where_query);
-                $config['per_page'] = 4;
+                $config['per_page'] = 20;
                 $config['uri_segment'] = 3;
 
                 $this -> pagination -> initialize ($config);

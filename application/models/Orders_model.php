@@ -12,6 +12,32 @@
 
         }
 
+        public function add ( $data)
+        {
+
+            $add = $this -> db
+                         -> insert_batch ( $this -> table_name, $data);
+
+
+            if ( $this -> db -> affected_rows () > 0) return true;
+
+            return false;
+
+        }
+
+        public function delete ($where)
+        {
+
+            $delete = $this -> db
+                            -> where ( $where)
+                            -> delete ( $this -> table_name);
+
+            if ( $this -> db -> affected_rows() > 0) return true;
+
+            return false;
+
+        }
+
         public function get_all ($where = array ())
         {
 
@@ -24,6 +50,19 @@
                             -> result (); 
 
             return $orders;
+
+        }
+
+        public function update ( $where, $data)
+        {
+
+            $update = $this -> db
+                            -> where ( $where)
+                            -> update ( $this -> table_name, $data);
+
+            if ( $this -> db -> affected_rows () > 0) return true;
+
+            return false;
 
         }
 

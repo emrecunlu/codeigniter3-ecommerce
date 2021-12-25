@@ -41,6 +41,7 @@
         {
 
             $adress = $this -> db
+                            -> join ('cities', 'cities.sehir_id = user_adress.user_city', 'inner')
                             -> get_where ($this -> table_name, $where)
                             -> row ();
 

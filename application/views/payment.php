@@ -14,7 +14,7 @@
         <?php if ( $this -> cart -> contents ()) : ?>
         <div class="user__cart">
             <div class="container">
-            <?=form_open (base_url('user/new_payment'), array ('id' => 'payment-form'));?>
+            <?=form_open (base_url('odeme'), array ('id' => 'payment-form'));?>
                 <div class="cart__wrapper">
                     <div class="cart__products">
                         <div class="payment__title">
@@ -24,7 +24,7 @@
                         <?php if (!empty ($adresses)) : ?>
                         <div class="adresses payment">
                             <?php foreach ( $adresses as $index => $adress) : ?>
-                            <input type="checkbox" class="adress__hidden" name="adress_id" id="adress-<?=$index;?>" value="<?=$this -> encryption -> encrypt ($adress -> adress_id)?>">
+                            <input type="checkbox" <?=$index === 0 ? 'checked' : null; ?> class="adress__hidden" name="adress_id" id="adress-<?=$index;?>" value="<?=$this -> encryption -> encrypt ($adress -> adress_id)?>">
                             <label for="adress-<?=$index;?>" class="adress-label">
                                 <div class="adress">
                                     <div class="adress__info">
@@ -64,7 +64,7 @@
                             <p><?=number_format($this -> cart -> total (), 2, ',', '.');?> TL</p>
                         </div>
                         <div class="cart__success">
-                            <button type="submit" id="payment-success">Siparişi Tamamla</button>
+                            <button type="submit" id="payment-success">Ödemeye Geç</button>
                         </div>
                     </div>
                 </div>

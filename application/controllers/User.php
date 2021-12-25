@@ -12,8 +12,6 @@
 
             $this -> load -> model ('Adress_model', 'adress');
 
-            $this -> load -> model ('Payment_model', 'payment');
-
             $this -> load -> helper ('date');
 
             $this -> load -> library ('form_validation');
@@ -240,56 +238,6 @@
 
             }
             
-        }
-
-        public function new_payment ()
-        {
-
-            if ( $this -> input -> method ('REQUEST_METHOD') == 'POST') {
-
-                $this -> form_validation -> set_rules ('adress_id', 'Adresiniz', 'required|trim');
-
-                if ( $this -> form_validation -> run () == TRUE) {
-
-                    $data = array ();
-
-                    $adress_id = $this -> encryption -> decrypt ( $this -> input -> post ('adress_id'));
-                    
-                    $user_id = $this -> session -> userdata ('login_user')['user_id'];
-
-                    foreach ( $this -> cart -> contents () as $cart) {
-
-                        array_push($data, array (
-                            'user_id' => $user_id,
-                            'product_id' => $cart['product_id'],
-                            'adress_id' => $adress_id,
-                            'option_id' => $cart['options']['id'] !== '' ? $cart['options']['id'] : null,
-                            'quantity' => $cart['qty'],
-                            'total_price' => $cart['subtotal']
-                        ));
-
-                    }      
-                    
-                    if ( $this -> payment -> add ($data)) {
-
-                        $this -> session -> set_flashdata ('payment_success', true);
-
-                        $this -> cart -> destroy ();
-
-                        redirect (base_url());
-
-                    } else {
-                        
-                        $this -> session -> set_flashdata ('payment_error', true);
-
-                        redirect (base_url());
-                        
-                    }
-
-                }
-
-            }
-
         }
 
         public function delete_adress ()

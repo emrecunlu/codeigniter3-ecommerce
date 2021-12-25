@@ -23,6 +23,18 @@
 
         }
 
+        public function insert ( $data)
+        {
+
+            $added = $this -> db
+                           -> insert ( $this -> table_name, $data);
+
+            if ( $this -> db -> affected_rows() > 0) return true;
+
+            return false;
+
+        }
+
         public function get ($where)
         {
         

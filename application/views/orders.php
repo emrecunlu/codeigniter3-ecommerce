@@ -36,7 +36,7 @@
                         <h1>Siparişlerim</h1>
                     </div>
                     <div class="orders">
-                        <table id="example" class="ui celled table" style="width:100%">
+                        <table id="example" class="ui table" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Ürün</th>
@@ -56,7 +56,7 @@
                                         </td>
                                         <td>
                                             <div class="product__name">
-                                                <h1><?=$order -> product_name;?></h1>
+                                                <h1><?=word_limiter($order -> product_name, 10, ' ...') . ' ' .  $order -> option_value;?></h1>
                                             </div>
                                         </td>
                                         <td>
@@ -71,7 +71,7 @@
                                         </td>
                                         <td>
                                             <div class="purchase__date">
-                                                <p><?=nice_date($order -> purchase_date, 'Y-m-d');?></p>
+                                                <p><?=iconv('latin5', 'utf-8', strftime('%e %B %Y', strtotime($order -> purchase_date)))?></p>
                                             </div>
                                         </td>
                                     </tr>

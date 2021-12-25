@@ -11,7 +11,7 @@
 <script>
     Swal.fire({
         title: 'Hata!',
-        text: 'Sipariş esnasında hata meydana geldi.',
+        text: "<?=$this -> session -> flashdata ('paymet_error');?>",
         icon: 'error',
         confirmButtonText: 'Kapat.'
     });
