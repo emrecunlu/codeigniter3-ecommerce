@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 25 Ara 2021, 16:39:38
+-- Üretim Zamanı: 29 Ara 2021, 11:39:28
 -- Sunucu sürümü: 10.4.22-MariaDB
--- PHP Sürümü: 8.0.13
+-- PHP Sürümü: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1172,6 +1172,7 @@ CREATE TABLE `orders` (
   `quantity` int(11) NOT NULL,
   `total_price` decimal(10,2) NOT NULL,
   `order_no` varchar(255) NOT NULL,
+  `user_ip` varchar(25) NOT NULL,
   `is_completed` tinyint(1) NOT NULL DEFAULT 0,
   `purchase_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -1180,16 +1181,9 @@ CREATE TABLE `orders` (
 -- Tablo döküm verisi `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `adress_id`, `option_id`, `quantity`, `total_price`, `order_no`, `is_completed`, `purchase_date`) VALUES
-(108, 14, 69, 14, 13, 1, '329.00', '37608451', 1, '2021-12-24 15:45:09'),
-(109, 14, 10, 14, 0, 1, '1599.00', '05896231', 1, '2021-12-24 15:45:54'),
-(110, 14, 7, 14, 0, 1, '189.90', '05896231', 1, '2021-12-24 15:45:54'),
-(112, 14, 64, 14, 0, 1, '17371.08', '54712398', 1, '2021-12-24 15:49:58'),
-(113, 14, 68, 14, 9, 1, '254.90', '03945871', 0, '2021-12-24 15:51:31'),
-(115, 18, 69, 15, 15, 1, '329.00', '37280695', 0, '2021-12-25 15:07:18'),
-(116, 18, 70, 15, 18, 1, '6826.05', '19538204', 1, '2021-12-25 15:08:17'),
-(117, 18, 63, 15, 0, 1, '8775.00', '37291648', 0, '2021-12-25 15:34:54'),
-(118, 18, 72, 15, 0, 1, '4300.00', '35046192', 0, '2021-12-25 15:37:10');
+INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `adress_id`, `option_id`, `quantity`, `total_price`, `order_no`, `user_ip`, `is_completed`, `purchase_date`) VALUES
+(137, 22, 2, 21, 20, 20, '244721.05', '42169075', '::1', 1, '2021-04-06 20:35:14'),
+(138, 22, 2, 21, 20, 1, '24471.05', '12437698', '::1', 1, '2021-12-29 09:43:07');
 
 -- --------------------------------------------------------
 
@@ -1213,24 +1207,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `category_id`, `product_image`, `product_entry_date`, `product_url`, `is_live`) VALUES
-(4, 'Apple MacBook Air M1 Çip 8GB 256GB SSD macOS 13\" QHD Taşınabilir Bilgisayar Uzay Grisi MGN63TU/A', '13499.00', 11, '10983949860914.jpg', '2021-12-05 14:25:56', 'apple-macbook-air-m1-cip-8gb-256gb-ssd-macos-13-qhd-tasinabilir-bilgisayar-uzay-grisi-mgn63tua', 1),
-(5, 'Xiaomi Redmi Note 10S 128 GB 6 GB Ram (Xiaomi Türkiye Garantili)', '4069.00', 10, '110000045850384.jpg', '2021-12-05 14:27:33', 'xiaomi-redmi-note-10s-128-gb-6-gb-ram-xiaomi-turkiye-garantili', 1),
-(6, 'Msı Rtx 3060 Ti Gamıng Z Trıo Lhr 8gb Gddr6 256BIT Ekran Kartı RTX-3060-TI-GAMING-Z-TRIO-8G-LHR', '21664.09', 13, '110000055071814.jpg', '2021-12-05 14:28:26', 'msi-rtx-3060-ti-gaming-z-trio-lhr-8gb-gddr6-256bit-ekran-karti-rtx-3060-ti-gaming-z-trio-8g-lhr', 1),
-(7, 'Yüzüklerin Efendisi 3 Cilt Takım (Yüzük Kardeşliği, İki Kule, Kralın Dönüşü)\r\n', '189.90', 15, '10481312071730.jpg', '2021-12-05 14:29:57', 'yuzuklerin-efendisi-3-cilt-takim-yuzuk-kardesligi-iki-kule-kralin-donusu', 1),
-(8, 'MSI B450M Bazooka AM4 DDR4 3466 (OC )HDMI M.2 USB3.2 WIFI MATX Anakart\r\n', '1009.62', 13, '11259522875442.jpg', '2021-12-05 14:31:08', 'msi-b450m-bazooka-am4-ddr4-3466-oc-hdmi-m2-usb32-wifi-matx-anakart', 1),
-(9, 'ASUS ROG STRIX Z690 Intel 6400MHz DDR5 LGA1700 ATX Anakart ROG STRIX Z690-F GAMING WIFI\r\n', '9177.78', 13, '110000087968069.jpg', '2021-12-07 22:29:17', 'asus-rog-strix-z690-intel-6400mhz-ddr5-lga1700-atx-anakart-rog-strix-z690-f-gaming-wifi', 1),
-(10, 'Corsair Vengeance RGB Pro 16GB (2x8GB) 3600MHz DDR4 Ram CMW16GX4M2Z3600C18\r\n', '1599.00', 13, '10336656261170.jpg', '2021-12-07 22:31:10', 'corsair-vengeance-rgb-pro-16gb-2x8gb-3600mhz-ddr4-ram-cmw16gx4m2z3600c18', 1),
-(11, 'Amd Ryzen 5 5600X 3.7ghz 35MB Cache Soket Am4 Işlemci', '4398.99', 13, '10938125287474.jpg', '2021-12-07 23:17:13', 'amd-ryzen-5-5600x-37ghz-35mb-cache-soket-am4-islemci', 1),
-(63, 'Roborock S6 MaxV Vacuum Cleaner', '8775.00', 12, '1a47a1376d93fa4931a231934dcedc26.jpg', '2021-12-21 21:00:34', 'roborock-s6-maxv-vacuum-cleaner', 1),
-(64, 'MSI GF63 THIN 11SC-035XTR Intel Core I5-11400H 8GB 512GB SSD GTX1650 Freedos 15.6 FHD Taşınabilir Bilgisayar', '17371.08', 11, '4093aad43a145941ad4adc2f4d5d6246.jpg', '2021-12-21 21:03:50', 'msi-gf63-thin-11sc-035xtr-intel-core-i5-11400h-8gb-512gb-ssd-gtx1650-freedos-15-6-fhd-tasinabilir-bilgisayar', 1),
-(65, 'Deneme ürün başlık', '120.00', 12, '2f2baf752a7308db285dc70520052b19.jpg', '2021-12-21 21:09:31', 'deneme-urun-baslik', 1),
-(66, 'Deneme ürün başlık', '120.00', 12, '0b22a58d5d4e4b0751e3daa9e1c51613.jpg', '2021-12-21 21:10:00', 'deneme-urun-baslik', 1),
-(67, 'Deneme ürün başlık', '120.00', 12, '79db4421bd3cfdefe1a92a0d7c8ea479.jpg', '2021-12-21 21:10:54', 'deneme-urun-baslik', 1),
-(68, 'Slazenger Peer Oversize Kadın Sweatshirt', '254.90', 20, '3ada973472838290eb274fc4b1a95d30.jpg', '2021-12-21 21:14:07', 'slazenger-peer-oversize-kadin-sweatshirt', 1),
-(69, 'Kiğılı Kapüşonlu Spor Kaban', '329.00', 20, 'cd000ee2904d6ec59230ea07c28336ba.jpg', '2021-12-21 21:16:14', 'kigili-kapusonlu-spor-kaban', 1),
-(70, 'Apple iPad 8. Nesil 32 GB 10.2&quot; WiFi Tablet - MYL92TU/A', '6826.05', 12, '1549d3bd7a713c98dba7dbe677af23b4.jpg', '2021-12-21 21:20:52', 'apple-ipad-8-nesil-32-gb-10-2-wifi-tablet-myl92tu-a', 1),
-(71, 'Karaca Çaysever Konuşan Çay Makinesi', '1034.90', 12, 'bbde1f077c58670e3277fe5f5d3d4c82.jpg', '2021-12-22 09:41:28', 'karaca-caysever-konusan-cay-makinesi', 1),
-(72, 'Gymholix SquatC Compact Katlanabilir Fitness İstasyonu V.2', '4300.00', 20, '166d1f32ec15dd6d722d01291f01b9c2.jpg', '2021-12-25 15:36:40', 'gymholix-squatc-compact-katlanabilir-fitness-istasyonu-v-2', 1);
+(1, 'HP 15S-FQ2019NT Intel Core i7 1165G7 8GB 256GB SSD Freedos 15.6&quot; FHD Taşınabilir Bilgisayar 2N2M0EA', '9999.31', 11, '81c364ac5fa40efb777d0305db36f273.jpg', '2021-12-27 01:35:23', 'hp-15s-fq2019nt-intel-core-i7-1165g7-8gb-256gb-ssd-freedos-15-6-fhd-tasinabilir-bilgisayar-2n2m0ea', 1),
+(2, 'iPhone 13 Pro Max 128 GB', '24471.05', 10, 'f1b243192f788047a0fafe16ac4b88e3.jpg', '2021-12-27 01:41:19', 'iphone-13-pro-max-128-gb', 1),
+(3, 'Xiaomi Mi Robot Vacuum Mop Pro Beyaz - Akıllı Robot Süpürge', '5099.00', 12, '741b7266cc19a676fc095bd9d1229079.jpg', '2021-12-27 13:48:29', 'xiaomi-mi-robot-vacuum-mop-pro-beyaz-akilli-robot-supurge', 0);
 
 -- --------------------------------------------------------
 
@@ -1293,7 +1272,19 @@ INSERT INTO `product_images` (`image_id`, `product_id`, `image_path`) VALUES
 (51, 71, '353d628559dbd6dc05fbdd4afe528986.jpg'),
 (52, 71, '355568286f5b9ccfb73c97660f683654.jpg'),
 (53, 72, 'a671d9d2c1c14cad3dbab43367b47831.jpg'),
-(54, 72, '06ee3d2a29293c3c7db49bbf25ea75c6.jpg');
+(54, 72, '06ee3d2a29293c3c7db49bbf25ea75c6.jpg'),
+(55, 1, '644efc57e07cd2f475124c9ab25efd2d.jpg'),
+(56, 1, '130ca5abf6283d27e3a4eb39f1700bf9.jpg'),
+(57, 1, '6ca14b9b68f09c33a2b8d96acfdb419e.jpg'),
+(58, 1, '4802df9bbef28f18209cc52ce78298a4.jpg'),
+(59, 2, 'c4753b2cf4252dafc05a5cc4653e75c9.jpg'),
+(60, 2, '18a2290d0f77dbef413b135d10d4936c.jpg'),
+(61, 2, '3a766a85eb4fac29fe5a5eb7b5d65a57.jpg'),
+(62, 3, '96775e206a6b08fccd3f68d64fe57093.jpg'),
+(63, 3, 'e7271dcf51cf1c1d953b74354b44e440.jpg'),
+(64, 3, '77c531c3f74418edebe20648aa1e6a08.jpg'),
+(65, 3, 'e5fc602e12159e43ca8f1a7d27c14357.jpg'),
+(66, 3, '7ef88220ac2f6ebc177724162213e73e.jpg');
 
 -- --------------------------------------------------------
 
@@ -1325,7 +1316,23 @@ INSERT INTO `product_options` (`option_id`, `product_id`, `option_value`) VALUES
 (16, 70, 'Altın'),
 (17, 70, 'Gümüş'),
 (18, 70, 'Uzay Grisi'),
-(19, 71, 'Siyah');
+(19, 71, 'Siyah'),
+(20, 2, 'Altın'),
+(21, 2, 'Gümüş'),
+(22, 2, 'Kurşun Gri'),
+(23, 2, 'Mavi'),
+(24, 3, 'Beyaz');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `slider`
+--
+
+CREATE TABLE `slider` (
+  `slider_id` int(11) NOT NULL,
+  `slider_imgPath` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1346,11 +1353,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_register_date`) VALUES
-(14, 'Tutkun Turan', 'unl.c.emre@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-07 21:33:17'),
-(15, 'Hüseyin Kurban', 'huseyinkurban123@outlook.com', '23cee43d3dc575b387def6197ce46d51073ed50b', '2021-12-12 18:38:21'),
-(16, 'deneme deneme', 'deneme@codeigniter.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-13 12:31:12'),
-(17, 'Tutkun Turan', 'turan123@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-21 21:18:40'),
-(18, 'Deneme Kullanici', 'deneme@kullanici.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-25 15:05:35');
+(21, 'Umut Erozan', 'umut.erozan@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2021-12-27 10:29:26'),
+(22, 'Emrecan Ünlü', 'unl.c.emre@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-27 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -1375,11 +1379,9 @@ CREATE TABLE `user_adress` (
 --
 
 INSERT INTO `user_adress` (`adress_id`, `user_id`, `adress_title`, `user_name`, `user_tel`, `user_city`, `user_district`, `user_adress`, `user_tc`) VALUES
-(10, 15, 'Hüseyinin Evi', 'Hüseyin Kurban', '', 31, 431, 'Kütahya / Tavşanlı, No:12 D:1', '65458121223'),
-(12, 16, 'EV', 'Deneme Kullanıcı', '', 23, 291, 'Burdur / Ağlasun myo.', '11692698710'),
-(13, 17, 'Tutkunun Ev&#039;i', 'Tutkun Turan', '', 3, 93, 'İzmir/Torbalı, Barış yapı, no:5 kat:2 d:2', '25695958484'),
-(14, 14, 'Tutkunun Ev&#039;i', 'Emrecan Ünlü', '', 3, 93, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '14445595959'),
-(15, 18, 'Ev Adresim', 'Emrecan Ünlü', '', 3, 93, 'İzmir / Torbalı, Muratbey Mahallesi, No:12, D:1, 3506 Sk.', '11692698710');
+(19, 20, 'Umut&#039;un Evi', 'Umut Erozan', '5062645455', 14, 213, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '31314314134'),
+(20, 21, 'Umut&#039;un Ev&#039;i', 'Umut Erozan', '4848485494', 6, 128, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '31241331341'),
+(21, 22, 'Ev', 'Emrecan Ünlü', '0901034143', 3, 93, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '13431431414');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -1434,6 +1436,12 @@ ALTER TABLE `product_options`
   ADD PRIMARY KEY (`option_id`);
 
 --
+-- Tablo için indeksler `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`slider_id`);
+
+--
 -- Tablo için indeksler `users`
 --
 ALTER TABLE `users`
@@ -1477,37 +1485,43 @@ ALTER TABLE `counties`
 -- Tablo için AUTO_INCREMENT değeri `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_options`
 --
 ALTER TABLE `product_options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `user_adress`
 --
 ALTER TABLE `user_adress`
-  MODIFY `adress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `adress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

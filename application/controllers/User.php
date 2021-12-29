@@ -292,7 +292,7 @@
                         'user_id' => $this -> session -> userdata ('login_user')['user_id'],
                         'adress_title' => $this -> input -> post ('adress_title'),
                         'user_name' => $this -> input -> post ('user_name'),
-                        'user_tel' => $this -> input -> post ('user_tel	'),
+                        'user_tel' => $this -> input -> post ('user_tel'),
                         'user_city	' => $this -> input -> post ('user_city'),
                         'user_district' => $this -> input -> post ('user_district'),
                         'user_adress' => $this -> input -> post ('user_adress'),

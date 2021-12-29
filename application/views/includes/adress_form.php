@@ -12,7 +12,7 @@
                 </div>
                 <div class="input__group">
                     <label for="user-tel">Cep Telefonu</label>
-                    <input type="teş" name="user_tel" id="user-tel" required>
+                    <input type="text" name="user_tel" id="user-tel" required>
                 </div>
             </div>
             <div class="flex__group">

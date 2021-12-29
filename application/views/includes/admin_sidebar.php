@@ -4,7 +4,7 @@
     </div>
     <ul class="list-unstyled components text-secondary">
         <li>
-            <a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="<?=base_url('adminpanel/dashboard');?>"><i class="fas fa-home"></i> Dashboard</a>
         </li>
         <li>
             <a href="#productsmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-copy"></i> Ürünler</a>
@@ -18,10 +18,15 @@
             </ul>
         </li>
         <li>
-            <a href="users.html"><i class="fas fa-user-friends"></i>Kullanıcılar</a>
+            <a href="<?=base_url('adminpanel/orders');?>"><i class="fas fa-shopping-cart"></i>Siparişler</a>
         </li>
         <li>
-            <a href="settings.html"><i class="fas fa-cog"></i>Ayarlar</a>
+            <a href="#settingsMenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i> Ayarlar</a>
+            <ul class="collapse list-unstyled" id="settingsMenu">
+                <li>
+                    <a href="<?=base_url('adminpanel/showProducts');?>"><i class="fas fa-table"></i> Slider</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </nav>

@@ -383,6 +383,122 @@
 
         }
 
+        public function dashboard_cart ()
+        {
+
+            if ( $this -> input -> is_ajax_request() && $this -> input -> method(true) == 'POST') {
+
+                $months = array (1=>'Ocak',2=>'Şubat',3=>'Mart',4=>'Nisan',5=>'Mayıs',6=>'Haziran',7=>'Temmuz',8=>'Ağustos',9=>'Eylül',10=>'Ekim',11=>'Kasım',12=>'Aralık');
+
+                $orders = $this -> db -> query("select month(purchase_date) as 'month', sum(total_price) as 'subtotal', sum(quantity) as 'monthly_count', purchase_date from orders where is_completed = 1 group by purchase_date;") -> result ();
+
+                foreach ( $orders as $key => $order) {
+
+                    $monthName = $months [ $order -> month];
+
+                    $data['month'][] = $monthName;
+                    $data['subtotal'][] = $order -> subtotal;
+                    $data['monthly_count'][] = $order -> monthly_count;
+
+                }
+
+                echo json_encode( $data);
+ 
+            }
+
+        }
+
+        public function order ()
+        {
+
+            if ( $this -> input -> post ( 'order_id')) {
+
+                if ( $this -> input -> post ('request') == 'refund') {
+
+                    $json = array ();
+
+                    $order_id = $this -> input -> post ( 'order_id', true);
+
+                    $this -> load -> model ('Orders_model', 'order');
+
+                    $order = $this -> order -> get ( $order_id);
+
+                    if ( !empty ( $order)) {
+
+                        if ( $this -> order -> update ( array ( 'order_id' => $order_id), array ( 'is_completed' => false))) {
+
+                            $json = array ('status' => 'success', 'message' => 'İade işleminiz başarılı');
+
+                        } else {
+
+                            $json = array ( 'status' => 'error', 'İade işleminde hata meydana geldi.');
+
+                        }
+
+                    } else {
+
+                        $json = array ('status' => 'error', 'message' => 'Lütfen geçerli order id giriniz.');
+
+                    }
+
+                    echo json_encode( $json);
+
+                    exit ;
+
+                } elseif ( $this -> input -> post ( 'request') == 'get') {
+
+                    echo 'hi!';
+                    
+                }
+                
+            }
+
+        }
+
+        public function slider_settings ()
+        {
+
+            if ( $this -> input -> method ( TRUE) == 'POST' && isset ( $_FILES['file'])) {
+
+                $json = array ();
+
+                $this -> load -> model ( 'Slide_model', 'slider');
+
+                $this -> load -> library ( 'upload', array ( 
+                    'upload_path' => './public/images/',
+                    'allowed_types' => 'png|jpg|jpeg',
+                    'max_size' => 5000,
+                    'file_ext_tolower' => true,
+                    'encrypt_name' => true,
+                    'remove_spaces' => true
+                ));
+
+                if ( $this -> input -> post ( 'process') == 'insert') {
+
+                    if ( $this -> upload -> do_upload ( 'file')) {
+
+                        $json = array ('status' => 'success', 'message' => 'Resim başarıyla eklendi');
+    
+                    } else {
+    
+                        $json = array ( 'status' => 'error', 'message' => $this -> upload -> display_errors ('', ''));
+    
+                    }
+
+                } elseif ( $this -> input -> post ( 'process') == 'delete') {
+
+                    echo 'delete';
+
+                }
+
+                echo json_encode( $json);
+
+                exit ;
+
+            }
+
+        }
+
     }
 
 ?>

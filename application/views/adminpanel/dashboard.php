@@ -139,11 +139,11 @@
                                     <div class="card">
                                         <div class="content">
                                             <div class="head">
-                                                <h5 class="mb-0">Traffic Overview</h5>
-                                                <p class="text-muted">Current year website visitor data</p>
+                                                <h5 class="mb-0">Toplam Satış Grafiği (Aylık)</h5>
+                                                <p class="text-muted">Aylık kaç ürün satıldığını gösterir.</p>
                                             </div>
                                             <div class="canvas-wrapper">
-                                                <canvas class="chart" id="trafficflow"></canvas>
+                                                <canvas class="chart" id="sales"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -152,17 +152,18 @@
                                     <div class="card">
                                         <div class="content">
                                             <div class="head">
-                                                <h5 class="mb-0">Sales Overview</h5>
-                                                <p class="text-muted">Current year sales data</p>
+                                                <h5 class="mb-0">Toplam Kazanç Grafiği</h5>
+                                                <p class="text-muted">Aylık kazancı gösterir.</p>
                                             </div>
                                             <div class="canvas-wrapper">
-                                                <canvas class="chart" id="sales"></canvas>
+                                                <canvas class="chart" id="prices"></canvas>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- 
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="content">
@@ -287,66 +288,93 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6 col-lg-3">
-                            <div class="card">
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="dfd text-center">
-                                            <i class="blue large-icon mb-2 fas fa-thumbs-up"></i>
-                                            <h4 class="mb-0">+21,900</h4>
-                                            <p class="text-muted">FACEBOOK PAGE LIKES</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3">
-                            <div class="card">
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="dfd text-center">
-                                            <i class="orange large-icon mb-2 fas fa-reply-all"></i>
-                                            <h4 class="mb-0">+22,566</h4>
-                                            <p class="text-muted">INSTAGRAM FOLLOWERS</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3">
-                            <div class="card">
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="dfd text-center">
-                                            <i class="grey large-icon mb-2 fas fa-envelope"></i>
-                                            <h4 class="mb-0">+15,566</h4>
-                                            <p class="text-muted">E-MAIL SUBSCRIBERS</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3">
-                            <div class="card">
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="dfd text-center">
-                                            <i class="olive large-icon mb-2 fas fa-dollar-sign"></i>
-                                            <h4 class="mb-0">+98,601</h4>
-                                            <p class="text-muted">TOTAL SALES</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        !-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <?php $this -> load -> view ('includes/admin_scripts'); ?>
+
+    <script>
+
+        $(document).ready ( function () {
+
+            $.post ('<?=base_url("admin/dashboard_cart");?>', {'<?=$this -> security -> get_csrf_token_name()?>': '<?=$this -> security -> get_csrf_hash()?>'}, response => {
+
+                var salesCart = document.getElementById("sales");
+                var priceChart = document.getElementById("prices");
+
+                var myChart1 = new Chart(salesCart, {
+                type: 'line',
+                data: {
+                    labels: response.month,
+                    datasets: [{
+                        data: response.monthly_count,
+                        backgroundColor: "rgba(48, 164, 255, 0.2)",
+                        borderColor: "rgba(48, 164, 255, 0.8)",
+                        fill: true,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart',
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Visitors',
+                            position: 'left',
+                        },
+                    },
+                }
+                });
+
+                // new
+                var myChart2 = new Chart(priceChart, {
+                type: 'bar',
+                data: {
+                    labels: response.month,
+                    datasets: [{
+                            label: 'Income',
+                            data: response.subtotal,
+                            backgroundColor: "rgba(76, 175, 80, 0.5)",
+                            borderColor: "#6da252",
+                            borderWidth: 1,
+                    }]
+                },
+                options: {
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart',
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Sales',
+                            position: 'left',
+                        },
+                    },
+                }
+            });
+
+            }, 'json');
+
+            console.log ( cart1Labels);
+
+        });
+
+    </script>
 </body>
 
 </html>

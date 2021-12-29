@@ -22,6 +22,7 @@
         public function dashboard ()
         {
 
+            
             $this -> load -> view ('adminpanel/dashboard');
 
         }
@@ -48,6 +49,24 @@
             $data['categories'] = $this -> category -> get_all ();
 
             $this -> load -> view ('adminpanel/add-product', $data);
+
+        }
+
+        public function sliderSettings ()
+        {
+
+            $this -> load -> view ('adminpanel/slider-settings');
+
+        }
+
+        public function orders ()
+        {
+
+            $this -> load -> model ( 'Orders_model', 'orders');
+            
+            $data ['orders'] = $this -> orders -> get_all (array ( 'is_completed' => true));
+
+            $this -> load -> view ('adminpanel/orders', $data);
 
         }
 

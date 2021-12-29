@@ -63,6 +63,7 @@
                     'tc_number' => $user_address -> user_tc,
                     'address' => $user_address -> user_adress,
                     'ip_address' => $this -> input -> ip_address (),
+                    'gsm_number' => $user_address -> user_tel,
                     'city' => $user_address -> sehir_title
                 );
 
@@ -86,6 +87,7 @@
                         'quantity' => $item['qty'],
                         'total_price' => $item['subtotal'],
                         'order_no' => $form['order_id'],
+                        'user_ip' => $this -> input -> ip_address()
                     );
 
                 }
@@ -101,6 +103,11 @@
         public function new_payment ($order_id = null)
         {
 
+
+            // Iyzico samesite problem fixed.
+            
+            setcookie('cross-site-cookie', 'bar', ['samesite' => 'None', 'secure' => true]);
+
             if ( $this -> input -> method (true) == 'POST')
             {
 
@@ -114,8 +121,6 @@
                 if ( $data['status'] === 'success') {
 
                     $this -> order -> update ( array ('order_no' => $order_id), array ('is_completed' => 1));
-
-                    $this -> cart -> destroy ();
 
                     $this -> session -> set_flashdata ('payment_success', true);
 

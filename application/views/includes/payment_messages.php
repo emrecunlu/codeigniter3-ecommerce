@@ -1,4 +1,5 @@
 <?php if ( $this -> session -> flashdata ('payment_success')) : ?>
+<?php $this -> cart -> destroy (); ?>
 <script>
     Swal.fire({
         title: 'Başarılı!',

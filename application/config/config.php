@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/e-commerce/';
+$config['base_url'] = 'http://localhost/e-ticaret/';
 
 /*
 |--------------------------------------------------------------------------
@@ -101,7 +101,7 @@ $config['charset'] = 'UTF-8';
 | If you would like to use the 'hooks' feature you must enable it by
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
-*/
+*/  
 $config['enable_hooks'] = FALSE;
 
 /*
@@ -460,7 +460,9 @@ $config['csrf_exclude_uris'] = array(
     'api/update_basket',
     'payment/new_payment/.*?',
     'admin/get_product',
-    'admin/delete'
+    'admin/delete',
+    'admin/slider_settings',
+    'admin/order'
 );
 
 /*

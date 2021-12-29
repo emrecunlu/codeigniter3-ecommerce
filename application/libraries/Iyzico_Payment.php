@@ -71,6 +71,7 @@
             $buyer->setId($this -> buyer['id']);
             $buyer->setName($this -> buyer['name']);
             $buyer->setSurname($this -> buyer['surname']);
+            $buyer->setGsmNumber($this -> buyer['gsm_number']);
             $buyer->setEmail($this -> buyer['email']);
             $buyer->setIdentityNumber($this -> buyer['tc_number']);
             $buyer->setRegistrationAddress($this -> buyer['address']);
