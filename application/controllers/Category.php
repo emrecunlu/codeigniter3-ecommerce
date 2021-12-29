@@ -53,6 +53,8 @@
 
                 $data ['category_name'] = $category -> category_name;
 
+                $data ['best_sellers'] = $this -> product -> get_all (array (), 8);
+
                 $this -> load -> view ('category-product', $data);
 
             } else {

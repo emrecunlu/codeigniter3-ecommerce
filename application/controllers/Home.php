@@ -17,11 +17,11 @@
         public function index ()
         {
 
-            $this -> load -> view ('home', array (
-                'products' => $this -> product -> get_all ([
-                    'is_live' => 1
-                ], 20)
-            ));
+            $data ['products'] = $this -> product -> get_all ( [ 'is_live' => 1], 20);
+
+            $data ['best_sellers'] = $this -> product -> get_all (array (), 8);
+
+            $this -> load -> view ('home', $data);
 
         }
 

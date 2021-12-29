@@ -38,11 +38,12 @@
 
         }
 
+        
         public function get_all ($where = array ())
         {
 
             $orders = $this -> db
-                            -> select ('products.product_name, products.product_image, orders.total_price, orders.quantity, orders.purchase_date, product_options.option_value, users.user_name, orders.order_id, orders.order_no, orders.purchase_date, orders.user_id')
+                            -> select ('products.product_name, products.product_image, orders.total_price, orders.quantity, orders.purchase_date, product_options.option_value, users.user_name, orders.order_id, orders.order_no, orders.purchase_date, orders.user_id, products.product_url, products.product_price, product_options.option_value')
                             -> join ('products', 'products.product_id = orders.product_id', 'inner')
                             -> join ('product_options', 'product_options.option_id = orders.option_id', 'left')
                             -> join ( 'users', 'users.user_id = orders.user_id')
@@ -53,6 +54,8 @@
             return $orders;
 
         }
+
+
 
         public function get ( int $order_id) 
         {

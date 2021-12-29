@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,10 @@
     <title>Document</title>
     <?php $this -> load -> view ('includes/links'); ?>
 </head>
+
 <body>
-<?php $this -> load -> view ('includes/header'); ?>
-<?php $this -> load -> view ('includes/navbar'); ?>
+    <?php $this -> load -> view ('includes/header'); ?>
+    <?php $this -> load -> view ('includes/navbar'); ?>
     <div class="body">
         <div class="container-fluid form-container">
             <div class="user__form">
@@ -31,29 +33,30 @@
                     <?php $this -> load -> view ('includes/msg_error.php'); ?>
                     <div class="register__form form__user active">
                         <?php echo form_open(base_url('user/register')); ?>
-                            <div class="input__group">
-                                <label for="user-name">İsim Soyisim</label>
-                                <input type="text" name="user_name" id="user-name" placeholder="ad soyad" required>
+                        <div class="input__group">
+                            <label for="user-name">İsim Soyisim</label>
+                            <input type="text" name="user_name" id="user-name" placeholder="ad soyad" required>
+                        </div>
+                        <div class="input__group">
+                            <label for="user-mail">E-Mail</label>
+                            <input type="email" name="user_email" id="user-mail" placeholder="ad.soyad@example.com"
+                                required>
+                        </div>
+                        <div class="input__group">
+                            <label for="user-password">Şifre</label>
+                            <div class="show__input">
+                                <input type="password" name="user_password" id="user-password" placeholder="****">
+                                <i class="fa fa-eye show-password" aria-hidden="true" required></i>
                             </div>
-                            <div class="input__group">
-                                <label for="user-mail">E-Mail</label>
-                                <input type="email" name="user_email" id="user-mail" placeholder="ad.soyad@example.com" required>
+                        </div>
+                        <div class="input__group">
+                            <label for="user-repassword">Şifre(Tekrar)</label>
+                            <div class="show__input">
+                                <input type="password" name="user_repassword" id="user-repassword" placeholder="****">
+                                <i class="fa fa-eye show-password" aria-hidden="true" required></i>
                             </div>
-                            <div class="input__group">
-                                <label for="user-password">Şifre</label>
-                                <div class="show__input">
-                                    <input type="password" name="user_password" id="user-password" placeholder="****">
-                                    <i class="fa fa-eye show-password" aria-hidden="true" required></i>
-                                </div>
-                            </div>
-                            <div class="input__group">
-                                <label for="user-repassword">Şifre(Tekrar)</label>
-                                <div class="show__input">
-                                    <input type="password" name="user_repassword" id="user-repassword" placeholder="****">
-                                    <i class="fa fa-eye show-password" aria-hidden="true" required></i>
-                                </div>
-                            </div>
-                            <button type="submit" id="login-btn" name="login-btn">KAYIT OL</button>
+                        </div>
+                        <button type="submit" id="login-btn" name="login-btn">KAYIT OL</button>
                         <?php echo form_close(); ?>
                     </div>
                 </div>
@@ -62,18 +65,19 @@
     </div>
     <?php $this -> load -> view ('includes/scripts.php'); ?>
     <script>
-        let showBtn = document.querySelectorAll('.show-password');
+    let showBtn = document.querySelectorAll('.show-password');
 
-        showBtn.forEach(btn => {
-            btn.addEventListener('click', e => {
-                let thisInput = e.target.closest('.show__input').children[0];
+    showBtn.forEach(btn => {
+        btn.addEventListener('click', e => {
+            let thisInput = e.target.closest('.show__input').children[0];
 
-                if (thisInput.getAttribute('type') === 'text') thisInput.setAttribute('type', 'password');
-                else {
-                    thisInput.setAttribute('type', 'text');
-                }
-            });
+            if (thisInput.getAttribute('type') === 'text') thisInput.setAttribute('type', 'password');
+            else {
+                thisInput.setAttribute('type', 'text');
+            }
         });
+    });
     </script>
 </body>
+
 </html>

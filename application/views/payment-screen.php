@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,10 @@
     <title>Document</title>
     <?php $this -> load -> view ('includes/links'); ?>
 </head>
+
 <body>
-<?php $this -> load -> view ('includes/header');     ?>
-<?php $this -> load -> view ('includes/navbar'); ?>
+    <?php $this -> load -> view ('includes/header'); ?>
+    <?php $this -> load -> view ('includes/navbar'); ?>
     <div class="body">
         <div class="container py-5">
             <div id="iyzipay-checkout-form" class="responsive"></div>
@@ -22,4 +24,5 @@
     </div>
     <?php $this -> load -> view ('includes/scripts'); ?>
 </body>
+
 </html>

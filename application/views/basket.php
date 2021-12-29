@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,10 @@
     <title>Document</title>
     <?php $this -> load -> view ('includes/links'); ?>
 </head>
+
 <body>
-<?php $this -> load -> view ('includes/header');     ?>
-<?php $this -> load -> view ('includes/navbar'); ?>
+    <?php $this -> load -> view ('includes/header');     ?>
+    <?php $this -> load -> view ('includes/navbar'); ?>
     <div class="body">
         <?php if ( $this -> cart -> contents ()) : ?>
         <div class="user__cart">
@@ -31,16 +33,19 @@
                                     <td>
                                         <div class="product__thumb">
                                             <a href="<?=base_url($item['url']);?>">
-                                                <img src="<?=base_url('public/uploads/' . $item['image']);?>" alt="<?=$item['url'];?>">
+                                                <img src="<?=base_url('public/uploads/' . $item['image']);?>"
+                                                    alt="<?=$item['url'];?>">
                                             </a>
                                         </div>
                                         <div class="product__name">
-                                            <a href="<?=base_url($item['url']);?>"><?=word_limiter($item['name'], 10, ' ...') . ' - ' . $item['options']['value'];?></a>
+                                            <a
+                                                href="<?=base_url($item['url']);?>"><?=word_limiter($item['name'], 10, ' ...') . ' - ' . $item['options']['value'];?></a>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="product__input">
-                                            <input type="number" name="product-count" class="product__count" value="<?=$item['qty']?>">
+                                            <input type="number" name="product-count" class="product__count"
+                                                value="<?=$item['qty']?>">
                                         </div>
                                     </td>
                                     <td>
@@ -53,7 +58,8 @@
                                             <i class="fa fa-minus-circle" aria-hidden="true"></i>
                                         </div>
                                     </td>
-                                    <input type="hidden" class="cart-rowid" name="cart-rowid" value="<?=$item['rowid'];?>">
+                                    <input type="hidden" class="cart-rowid" name="cart-rowid"
+                                        value="<?=$item['rowid'];?>">
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -65,7 +71,8 @@
                         </div>
                         <div class="order__total">
                             <h1>Ara Toplam</h1>
-                            <p><?=number_format($this -> cart -> total () - $this -> cart -> total () * 18 / 100, 2, ',', '.')?> TL</p>
+                            <p><?=number_format($this -> cart -> total () - $this -> cart -> total () * 18 / 100, 2, ',', '.')?>
+                                TL</p>
                         </div>
                         <div class="order__kdv">
                             <h1>KDV</h1>
@@ -103,88 +110,87 @@
     </div>
     <?php $this -> load -> view ('includes/scripts'); ?>
     <script>
+    let oldQty;
 
-            let oldQty;
+    $('.product__count').change(function() {
 
-            $('.product__count').change(function () {
+        $(this).focusout();
+        $(this).focus();
 
-                $(this).focusout();
-                $(this).focus();
+    });
 
-            });
+    $('.product__remove > i').click(function() {
 
-            $('.product__remove > i').click( function () {
-            
-                let thisRow = $(this).closest('tr');
+        let thisRow = $(this).closest('tr');
 
-                thisRow.find('input[name="product-count"]').attr('value', 0).focusout();
-                
-            });
+        thisRow.find('input[name="product-count"]').attr('value', 0).focusout();
 
-            $('.product__count').focus ( function () {
+    });
 
-                oldQty = $(this).val ();
+    $('.product__count').focus(function() {
 
-            });
+        oldQty = $(this).val();
 
-            $('.product__count').focusout ( function () {
+    });
 
-                let itemQty = $(this).val ();
-                let rowid = $(this).closest('tr').find ('.cart-rowid').val ();
-                let thisRow = $(this).closest('tr');
+    $('.product__count').focusout(function() {
 
-                if ( oldQty !== itemQty) {
+        let itemQty = $(this).val();
+        let rowid = $(this).closest('tr').find('.cart-rowid').val();
+        let thisRow = $(this).closest('tr');
 
-                    if ( itemQty <= 0 || itemQty === '') itemQty = 0;
+        if (oldQty !== itemQty) {
 
-                    $.ajax ({
+            if (itemQty <= 0 || itemQty === '') itemQty = 0;
 
-                        url: '<?=base_url('api/update_basket');?>',
-                        type: 'POST',
-                        data: {
-                            rowid: rowid,
-                            itemQty: itemQty,
-                        },
-                        dataType: 'JSON',
+            $.ajax({
 
-                        beforeSend: function () {
+                url: '<?=base_url('api/update_basket');?>',
+                type: 'POST',
+                data: {
+                    rowid: rowid,
+                    itemQty: itemQty,
+                },
+                dataType: 'JSON',
 
-                            $('.backdrop').addClass('active');
+                beforeSend: function() {
 
-                        },
-                        success: function ( response) {
+                    $('.backdrop').addClass('active');
 
-                            if ( response.status == 'OK') {
-                                
-                                thisRow.find ('.product__price > p').html (response.prop.urun_toplam + ' TL');
-                                $('.order__total > p').html (response.prop.ara_toplam + ' TL');
-                                $('.order__kdv > p').html (response.prop.kdv + ' TL');
-                                $('.cart__total > p').html (response.prop.toplam + ' TL');
-                                $('.total__basket').html (response.prop.baet_total);
+                },
+                success: function(response) {
 
-                                toastr['success']('Başarılı', response.message);
+                    if (response.status == 'OK') {
 
-                            } else if ( response.status == 'refresh') window.location = '';
-                            else if ( response.status == 'error') {
+                        thisRow.find('.product__price > p').html(response.prop.urun_toplam + ' TL');
+                        $('.order__total > p').html(response.prop.ara_toplam + ' TL');
+                        $('.order__kdv > p').html(response.prop.kdv + ' TL');
+                        $('.cart__total > p').html(response.prop.toplam + ' TL');
+                        $('.total__basket').html(response.prop.baet_total);
 
-                                toastr['error']('Hata', response.message);
+                        toastr['success']('Başarılı', response.message);
 
-                            }
- 
-                            setTimeout(function () {
+                    } else if (response.status == 'refresh') window.location = '';
+                    else if (response.status == 'error') {
 
-                                $('.backdrop').removeClass('active'); 
+                        toastr['error']('Hata', response.message);
 
-                            }, 800) ;
+                    }
 
-                        }
+                    setTimeout(function() {
 
-                    })
+                        $('.backdrop').removeClass('active');
+
+                    }, 800);
 
                 }
 
-            });
+            })
 
+        }
+
+    });
     </script>
 </body>
+
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 29 Ara 2021, 11:39:28
+-- Üretim Zamanı: 29 Ara 2021, 20:04:02
 -- Sunucu sürümü: 10.4.22-MariaDB
 -- PHP Sürümü: 7.4.27
 
@@ -20,6 +20,17 @@ SET time_zone = "+00:00";
 --
 -- Veritabanı: `my_shop`
 --
+
+DELIMITER $$
+--
+-- Yordamlar
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_monthlyOrder` ()  BEGIN
+	SET lc_time_names = 'tr_TR';
+	SELECT SUM(orders.quantity) as "qty", SUM(orders.total_price) as "subtotal", MONTHNAME(orders.purchase_date) as "month" FROM orders WHERE orders.is_completed = 1 GROUP BY month ORDER BY month DESC;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -1183,7 +1194,9 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `adress_id`, `option_id`, `quantity`, `total_price`, `order_no`, `user_ip`, `is_completed`, `purchase_date`) VALUES
 (137, 22, 2, 21, 20, 20, '244721.05', '42169075', '::1', 1, '2021-04-06 20:35:14'),
-(138, 22, 2, 21, 20, 1, '24471.05', '12437698', '::1', 1, '2021-12-29 09:43:07');
+(138, 22, 2, 21, 20, 1, '24471.05', '12437698', '::1', 1, '2021-12-29 09:43:07'),
+(139, 22, 3, 21, 24, 1, '5099.00', '64185293', '::1', 0, '2021-12-29 10:43:47'),
+(140, 22, 6, 21, 0, 1, '1554.00', '05931824', '::1', 1, '2021-12-29 15:58:46');
 
 -- --------------------------------------------------------
 
@@ -1207,9 +1220,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `category_id`, `product_image`, `product_entry_date`, `product_url`, `is_live`) VALUES
-(1, 'HP 15S-FQ2019NT Intel Core i7 1165G7 8GB 256GB SSD Freedos 15.6&quot; FHD Taşınabilir Bilgisayar 2N2M0EA', '9999.31', 11, '81c364ac5fa40efb777d0305db36f273.jpg', '2021-12-27 01:35:23', 'hp-15s-fq2019nt-intel-core-i7-1165g7-8gb-256gb-ssd-freedos-15-6-fhd-tasinabilir-bilgisayar-2n2m0ea', 1),
-(2, 'iPhone 13 Pro Max 128 GB', '24471.05', 10, 'f1b243192f788047a0fafe16ac4b88e3.jpg', '2021-12-27 01:41:19', 'iphone-13-pro-max-128-gb', 1),
-(3, 'Xiaomi Mi Robot Vacuum Mop Pro Beyaz - Akıllı Robot Süpürge', '5099.00', 12, '741b7266cc19a676fc095bd9d1229079.jpg', '2021-12-27 13:48:29', 'xiaomi-mi-robot-vacuum-mop-pro-beyaz-akilli-robot-supurge', 0);
+(3, 'Samsung Galaxy S21 5G 128 GB (Samsung Türkiye Garantili)', '9699.00', 10, '2f23ab5ea34520fc868ce87f915dffbb.jpg', '2021-12-29 15:37:51', 'samsung-galaxy-s21-5g-128-gb-samsung-turkiye-garantili', 0),
+(6, 'Emporio Armani Ar1452 Erkek Kol Saati', '1554.00', 19, '047b38bcfa4df7d338874d2a21c26313.jpg', '2021-12-29 15:41:05', 'emporio-armani-ar1452-erkek-kol-saati', 1),
+(7, 'Asus ROG Zephyrus GX703HM-KF007 Intel Core i7 11800H 16GB 1TB SSD RTX3060 Freedos 17.3&quot; FHD Taşınabilir Bilgisayar', '34899.32', 11, '9bb2719580afb9a9c6ff70161dd40535.jpg', '2021-12-29 15:43:13', 'asus-rog-zephyrus-gx703hm-kf007-intel-core-i7-11800h-16gb-1tb-ssd-rtx3060-freedos-17-3-fhd-tasinabilir-bilgisayar', 1);
 
 -- --------------------------------------------------------
 
@@ -1228,63 +1241,12 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`image_id`, `product_id`, `image_path`) VALUES
-(9, 4, '10983949893682.jpg'),
-(10, 4, '10983949926450.jpg'),
-(11, 4, '10983949959218.jpg'),
-(12, 4, '10983949991986.jpg'),
-(13, 4, '110000015075876.jpg'),
-(14, 5, '110000046078981.jpg'),
-(15, 5, '110000045841105.jpg'),
-(16, 5, '110000045841078.jpg'),
-(17, 6, '110000055071815.jpg'),
-(18, 6, '110000055071816.jpg'),
-(19, 6, '110000055071817.jpg'),
-(20, 6, '110000055071818.jpg'),
-(21, 7, '10481312104498.jpg'),
-(22, 8, '11259522908210.jpg'),
-(24, 9, '110000087968070.jpg'),
-(25, 9, '110000087968071.jpg'),
-(26, 9, '110000087968072.jpg'),
-(27, 9, '110000087968073.jpg'),
-(28, 10, '10336656293938.jpg'),
-(29, 10, '10336656326706.jpg'),
-(30, 10, '10336656359474.jpg'),
-(31, 11, '10938125320242.jpg'),
-(32, 11, '10938125353010.jpg'),
-(33, 63, '2a5be7cac2ff759ee38b9393164e7e9b.jpg'),
-(34, 63, '23064e2f312e1b14aa734a993cb56af7.jpg'),
-(35, 63, 'aa5788d87ea4189a031f914e92212662.jpg'),
-(36, 63, '7b77e861e1cbf6852c1160546dd580bd.jpg'),
-(37, 64, '54c131d03ae293fb312c4d9856ac63a9.jpg'),
-(38, 64, '5ec95910dffe2bd8321e3d5e73948885.jpg'),
-(39, 64, 'fa64c8780349ea3e30b57d05bd2af347.jpg'),
-(40, 64, '6681db7166cb9032ebe7457a7d545d3b.jpg'),
-(41, 68, '44478e53507cdeb29ace22fcaf009ad2.jpg'),
-(42, 68, 'de58ca28ffe5b45b2289cec41ace85d6.jpg'),
-(43, 68, '98115e6467b1f4ba1ed4597bcf724d15.jpg'),
-(44, 68, '5cfb1c6d52fd9b53bb447a013b226bba.jpg'),
-(45, 69, 'b50c4ae08f4e6615b194f0ee4158db33.jpg'),
-(46, 69, 'c7aad490d9eb70755ac9f4b77b9b0157.jpg'),
-(47, 70, '8648946c8214790deadfa991e555baea.jpg'),
-(48, 70, 'ccb30c88c70bd063d9fc4228689cf040.jpg'),
-(49, 70, 'a175118e5720a48d46b2f93bf6f0bfa1.jpg'),
-(50, 71, '93c05e32ac74f25149ea87e696ae5778.jpg'),
-(51, 71, '353d628559dbd6dc05fbdd4afe528986.jpg'),
-(52, 71, '355568286f5b9ccfb73c97660f683654.jpg'),
-(53, 72, 'a671d9d2c1c14cad3dbab43367b47831.jpg'),
-(54, 72, '06ee3d2a29293c3c7db49bbf25ea75c6.jpg'),
-(55, 1, '644efc57e07cd2f475124c9ab25efd2d.jpg'),
-(56, 1, '130ca5abf6283d27e3a4eb39f1700bf9.jpg'),
-(57, 1, '6ca14b9b68f09c33a2b8d96acfdb419e.jpg'),
-(58, 1, '4802df9bbef28f18209cc52ce78298a4.jpg'),
-(59, 2, 'c4753b2cf4252dafc05a5cc4653e75c9.jpg'),
-(60, 2, '18a2290d0f77dbef413b135d10d4936c.jpg'),
-(61, 2, '3a766a85eb4fac29fe5a5eb7b5d65a57.jpg'),
-(62, 3, '96775e206a6b08fccd3f68d64fe57093.jpg'),
-(63, 3, 'e7271dcf51cf1c1d953b74354b44e440.jpg'),
-(64, 3, '77c531c3f74418edebe20648aa1e6a08.jpg'),
-(65, 3, 'e5fc602e12159e43ca8f1a7d27c14357.jpg'),
-(66, 3, '7ef88220ac2f6ebc177724162213e73e.jpg');
+(71, 5, 'd41371a3add7be660f04c4169838b804.jpg'),
+(72, 5, '280ad917e6e9e4379b03070a25e22d9b.jpg'),
+(73, 5, 'c9dd1a293a9468e6250ef6d201bb456f.jpg'),
+(74, 5, '035ba7b34f22b126adac9e595bc061ce.jpg'),
+(75, 7, '20f3a9e299d3a1c6455c091ce254ecc0.jpg'),
+(76, 7, '2420c9bb1a083c736d0a8d71a005b1e7.jpg');
 
 -- --------------------------------------------------------
 
@@ -1297,31 +1259,6 @@ CREATE TABLE `product_options` (
   `product_id` int(11) NOT NULL,
   `option_value` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Tablo döküm verisi `product_options`
---
-
-INSERT INTO `product_options` (`option_id`, `product_id`, `option_value`) VALUES
-(6, 5, 'Beyaz'),
-(7, 5, 'Gri'),
-(8, 5, 'Mavi'),
-(9, 68, 'S'),
-(10, 68, 'M'),
-(11, 68, 'L'),
-(12, 68, 'XL'),
-(13, 69, 'S'),
-(14, 69, 'M'),
-(15, 69, 'L'),
-(16, 70, 'Altın'),
-(17, 70, 'Gümüş'),
-(18, 70, 'Uzay Grisi'),
-(19, 71, 'Siyah'),
-(20, 2, 'Altın'),
-(21, 2, 'Gümüş'),
-(22, 2, 'Kurşun Gri'),
-(23, 2, 'Mavi'),
-(24, 3, 'Beyaz');
 
 -- --------------------------------------------------------
 
@@ -1485,25 +1422,25 @@ ALTER TABLE `counties`
 -- Tablo için AUTO_INCREMENT değeri `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_options`
 --
 ALTER TABLE `product_options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `slider`

@@ -22,7 +22,6 @@
         public function dashboard ()
         {
 
-            
             $this -> load -> view ('adminpanel/dashboard');
 
         }

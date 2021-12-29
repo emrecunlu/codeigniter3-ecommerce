@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,28 @@
     <title>Document</title>
     <?php $this -> load -> view ('includes/links'); ?>
 </head>
+
 <body>
-<?php $this -> load -> view ('includes/header');     ?>
-<?php $this -> load -> view ('includes/navbar'); ?>
+    <?php $this -> load -> view ('includes/header'); ?>
+    <?php $this -> load -> view ('includes/navbar'); ?>
     <div class="body">
         <?php if ( $this -> cart -> contents ()) : ?>
         <div class="user__cart">
             <div class="container">
-            <?=form_open (base_url('odeme'), array ('id' => 'payment-form'));?>
+                <?=form_open (base_url('odeme'), array ('id' => 'payment-form'));?>
                 <div class="cart__wrapper">
                     <div class="cart__products">
                         <div class="payment__title">
                             <h1>Adres</h1>
-                            <button type="button" class="pri__btn" onclick="window.location = '<?=base_url('adreslerim');?>'">YENİ ADRES EKLE</button>
+                            <button type="button" class="pri__btn"
+                                onclick="window.location = '<?=base_url('adreslerim');?>'">YENİ ADRES EKLE</button>
                         </div>
                         <?php if (!empty ($adresses)) : ?>
                         <div class="adresses payment">
                             <?php foreach ( $adresses as $index => $adress) : ?>
-                            <input type="checkbox" <?=$index === 0 ? 'checked' : null; ?> class="adress__hidden" name="adress_id" id="adress-<?=$index;?>" value="<?=$this -> encryption -> encrypt ($adress -> adress_id)?>">
+                            <input type="checkbox" <?=$index === 0 ? 'checked' : null; ?> class="adress__hidden"
+                                name="adress_id" id="adress-<?=$index;?>"
+                                value="<?=$this -> encryption -> encrypt ($adress -> adress_id)?>">
                             <label for="adress-<?=$index;?>" class="adress-label">
                                 <div class="adress">
                                     <div class="adress__info">
@@ -38,14 +43,15 @@
                                             <p><?=$adress -> user_adress;?></p>
                                         </div>
                                         <div class="adress-il__ilce">
-                                            <p class="fw-bold"><?=$adress -> sehir_title;?> / <?=$adress -> ilce_title;?></p>
+                                            <p class="fw-bold"><?=$adress -> sehir_title;?> /
+                                                <?=$adress -> ilce_title;?></p>
                                         </div>
                                     </div>
                                 </div>
                             </label>
                             <?php endforeach; ?>
                         </div>
-                    <?php endif; ?>
+                        <?php endif; ?>
                     </div>
                     <div class="cart__order">
                         <div class="cart__detail">
@@ -53,7 +59,8 @@
                         </div>
                         <div class="order__total">
                             <h1>Ara Toplam</h1>
-                            <p><?=number_format($this -> cart -> total () - $this -> cart -> total () * 18 / 100, 2, ',', '.')?> TL</p>
+                            <p><?=number_format($this -> cart -> total () - $this -> cart -> total () * 18 / 100, 2, ',', '.')?>
+                                TL</p>
                         </div>
                         <div class="order__kdv">
                             <h1>KDV</h1>
@@ -68,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-            <?php echo form_close(); ?>
+                <?php echo form_close(); ?>
             </div>
         </div>
         <?php else : ?>
@@ -90,42 +97,40 @@
     </div>
     <?php $this -> load -> view ('includes/scripts'); ?>
     <script>
+    function uncheckedAll() {
 
-        function uncheckedAll ()
-        {
+        $('.adress__hidden').each((index, item) => {
 
-            $('.adress__hidden').each ((index, item) => {
+            $(item).prop('checked', false);
 
-                $(item).prop('checked', false); 
+        });
 
-            });
-            
+    }
+
+    $('.adress__hidden').change(function() {
+
+        uncheckedAll();
+
+        $(this).prop('checked', true);
+
+    });
+
+    $('#payment-form').submit(function(e) {
+
+        if ($('.adress__hidden').is(':checked') == true) {
+
+            return true;
+
+        } else {
+
+            toastr['error']('Hata', 'Lütfen geçerli bir adres seçiniz.');
+
+            return false;
+
         }
 
-        $('.adress__hidden').change( function () {
-
-            uncheckedAll();
-
-            $(this).prop('checked', true);
-
-        });
-
-        $ ('#payment-form').submit ( function (e) {
-
-            if ( $('.adress__hidden').is(':checked') == true) {
-
-                return true;
-
-            } else {
-
-                toastr['error']('Hata', 'Lütfen geçerli bir adres seçiniz.');
-
-                return false;
-                
-            }
-
-        });
-
+    });
     </script>
 </body>
+
 </html>

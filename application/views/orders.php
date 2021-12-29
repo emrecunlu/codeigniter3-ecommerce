@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +10,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.semanticui.min.css">
     <?php $this -> load -> view ('includes/links'); ?>
 </head>
+
 <body>
-<?php $this -> load -> view ('includes/header') ?>
-<?php $this -> load -> view ('includes/navbar') ?>
+    <?php $this -> load -> view ('includes/header') ?>
+    <?php $this -> load -> view ('includes/navbar') ?>
     <div class="body pt-1 pt-xl-0">
         <div class="container my-xl-5 my-0">
             <div class="user__detail">
@@ -31,7 +33,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="detail__contents">  
+                <div class="detail__contents">
                     <div class="detail__title">
                         <h1>Siparişlerim</h1>
                     </div>
@@ -48,33 +50,36 @@
                             </thead>
                             <tbody>
                                 <?php foreach ( $orders as $order) : ?>
-                                    <tr>
-                                        <td>
-                                            <div class="product__img">
-                                                <img src="<?=base_url('public/uploads/' . $order -> product_image);?>" alt="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="product__name">
-                                                <h1><?=word_limiter($order -> product_name, 10, ' ...') . ' ' .  $order -> option_value;?></h1>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="product__qty">
-                                                <p><?=$order -> quantity;?></p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="product-total__price">
-                                                <p><?=number_format($order -> total_price, 2, ',', '.');?> TL</p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="purchase__date">
-                                                <p><?=iconv('latin5', 'utf-8', strftime('%e %B %Y', strtotime($order -> purchase_date)))?></p>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        <div class="product__img">
+                                            <img src="<?=base_url('public/uploads/' . $order -> product_image);?>"
+                                                alt="">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="product__name">
+                                            <h1><?=word_limiter($order -> product_name, 10, ' ...') . ' ' .  $order -> option_value;?>
+                                            </h1>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="product__qty">
+                                            <p><?=$order -> quantity;?></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="product-total__price">
+                                            <p><?=number_format($order -> total_price, 2, ',', '.');?> TL</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="purchase__date">
+                                            <p><?=iconv('latin5', 'utf-8', strftime('%e %B %Y', strtotime($order -> purchase_date)))?>
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -88,14 +93,15 @@
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.semanticui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
     <script>
-        $(document).ready ( function () {
-            $('#example').DataTable ({
-                responsive: true,
-                language: {
-                    'url': 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/tr.json'
-                }
-            });
+    $(document).ready(function() {
+        $('#example').DataTable({
+            responsive: true,
+            language: {
+                'url': 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/tr.json'
+            }
         });
+    });
     </script>
 </body>
+
 </html>

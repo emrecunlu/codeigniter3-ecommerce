@@ -27,6 +27,7 @@
 
                 $product = $product -> row ();
                 
+                
                 $this -> load -> view ('product', array (
                     'product' => $product,
                     'images' => $this -> product -> get_images (array (
@@ -34,7 +35,8 @@
                     )),
                     'options' => $this -> product -> get_options ( array (
                         'product_id' => $product -> product_id
-                    ))
+                    )),
+                    'best_sellers' => $this -> product -> get_all (array (), 8)
                 ));
 
             } else {

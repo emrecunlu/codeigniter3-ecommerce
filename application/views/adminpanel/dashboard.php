@@ -306,10 +306,11 @@
                 var priceChart = document.getElementById("prices");
 
                 var myChart1 = new Chart(salesCart, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: response.month,
                     datasets: [{
+                        label: 'Miktar',
                         data: response.monthly_count,
                         backgroundColor: "rgba(48, 164, 255, 0.2)",
                         borderColor: "rgba(48, 164, 255, 0.8)",
@@ -338,11 +339,11 @@
 
                 // new
                 var myChart2 = new Chart(priceChart, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: response.month,
                     datasets: [{
-                            label: 'Income',
+                            label: 'Tutar (TRY)',
                             data: response.subtotal,
                             backgroundColor: "rgba(76, 175, 80, 0.5)",
                             borderColor: "#6da252",

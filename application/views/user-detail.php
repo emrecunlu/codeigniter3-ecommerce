@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,10 @@
     <title>Document</title>
     <?php $this -> load -> view ('includes/links'); ?>
 </head>
+
 <body>
-<?php $this -> load -> view ('includes/header'); ?>
-<?php $this -> load -> view ('includes/navbar'); ?>
+    <?php $this -> load -> view ('includes/header'); ?>
+    <?php $this -> load -> view ('includes/navbar'); ?>
     <div class="body pt-1 pt-xl-0">
         <div class="container my-xl-5 my-0">
             <div class="user__detail">
@@ -43,7 +45,8 @@
                             </div>
                             <div class="input__group">
                                 <label for="user_email">E-Mail</label>
-                                <input type="text" name="user_email" id="user_email" value="<?=$user -> user_email;?>" disabled>
+                                <input type="text" name="user_email" id="user_email" value="<?=$user -> user_email;?>"
+                                    disabled>
                             </div>
                         </div>
                         <button type="submit">BİLGİLERİMİ KAYDET</button>
@@ -52,11 +55,13 @@
                         <div class="group__flex">
                             <div class="input__group">
                                 <label for="user_oldpassword">Eski Şifreniz</label>
-                                <input type="password" name="user_oldpassword" id="user_oldpassword" placeholder="Eski Şifreniz">
+                                <input type="password" name="user_oldpassword" id="user_oldpassword"
+                                    placeholder="Eski Şifreniz">
                             </div>
                             <div class="input__group">
                                 <label for="user_password">Yeni Şifreniz</label>
-                                <input type="password" name="user_password" id="user_oldpassword" placeholder="Yeni Şifreniz">
+                                <input type="password" name="user_password" id="user_oldpassword"
+                                    placeholder="Yeni Şifreniz">
                             </div>
                         </div>
                         <button type="submit">ŞİFRE DEĞİŞTİR</button>
@@ -68,4 +73,5 @@
     </div>
     <?php $this -> load -> view ('includes/scripts'); ?>
 </body>
+
 </html>

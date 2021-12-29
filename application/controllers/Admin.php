@@ -388,17 +388,13 @@
 
             if ( $this -> input -> is_ajax_request() && $this -> input -> method(true) == 'POST') {
 
-                $months = array (1=>'Ocak',2=>'Şubat',3=>'Mart',4=>'Nisan',5=>'Mayıs',6=>'Haziran',7=>'Temmuz',8=>'Ağustos',9=>'Eylül',10=>'Ekim',11=>'Kasım',12=>'Aralık');
+                $orders = $this -> db -> query( 'CALL `sp_monthlyOrder`();') -> result ();
 
-                $orders = $this -> db -> query("select month(purchase_date) as 'month', sum(total_price) as 'subtotal', sum(quantity) as 'monthly_count', purchase_date from orders where is_completed = 1 group by purchase_date;") -> result ();
+                foreach ( $orders as $order) {
 
-                foreach ( $orders as $key => $order) {
-
-                    $monthName = $months [ $order -> month];
-
-                    $data['month'][] = $monthName;
+                    $data['monthly_count'][] = $order -> qty;
+                    $data['month'][] = $order -> month;
                     $data['subtotal'][] = $order -> subtotal;
-                    $data['monthly_count'][] = $order -> monthly_count;
 
                 }
 
