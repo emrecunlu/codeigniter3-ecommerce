@@ -42,7 +42,7 @@
 
             $this -> load -> model ('Orders_model', 'orders');
 
-            $data ['orders'] = $this -> orders -> get_all (array ('user_id' => $this -> session -> userdata('login_user')['user_id'], 'is_completed' => 1));
+            $data ['orders'] = $this -> orders -> get_all (array ('orders.user_id' => $this -> session -> userdata('login_user')['user_id'], 'is_completed' => 1));
 
             $this -> load -> view ('orders', $data);
 
