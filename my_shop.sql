@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 29 Ara 2021, 20:04:02
+-- Üretim Zamanı: 13 Oca 2022, 20:53:32
 -- Sunucu sürümü: 10.4.22-MariaDB
--- PHP Sürümü: 7.4.27
+-- PHP Sürümü: 8.0.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,7 +27,15 @@ DELIMITER $$
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_monthlyOrder` ()  BEGIN
 	SET lc_time_names = 'tr_TR';
-	SELECT SUM(orders.quantity) as "qty", SUM(orders.total_price) as "subtotal", MONTHNAME(orders.purchase_date) as "month" FROM orders WHERE orders.is_completed = 1 GROUP BY month ORDER BY month DESC;
+	SELECT SUM(orders.quantity) as "qty", SUM(orders.total_price) as "subtotal", MONTHNAME(orders.purchase_date) as "month" FROM orders WHERE orders.is_completed = 1 GROUP BY month ORDER BY month ASC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_monthlySales` ()  BEGIN
+SELECT SUM(orders.quantity) as "qty", SUM(orders.total_price) as "subtotal" FROM orders WHERE orders.purchase_date >= NOW() - INTERVAL 1 month AND orders.is_completed = 1;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_weeklySales` ()  BEGIN
+SELECT SUM(orders.quantity) as "qty", SUM(orders.total_price) as "subtotal" FROM orders WHERE orders.purchase_date >= NOW() - INTERVAL 1 week AND orders.is_completed = 1;
 END$$
 
 DELIMITER ;
@@ -1193,10 +1201,14 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `adress_id`, `option_id`, `quantity`, `total_price`, `order_no`, `user_ip`, `is_completed`, `purchase_date`) VALUES
-(137, 22, 2, 21, 20, 20, '244721.05', '42169075', '::1', 1, '2021-04-06 20:35:14'),
-(138, 22, 2, 21, 20, 1, '24471.05', '12437698', '::1', 1, '2021-12-29 09:43:07'),
+(138, 22, 2, 21, 20, 1, '24471.05', '12437698', '::1', 1, '2021-01-29 09:43:07'),
 (139, 22, 3, 21, 24, 1, '5099.00', '64185293', '::1', 0, '2021-12-29 10:43:47'),
-(140, 22, 6, 21, 0, 1, '1554.00', '05931824', '::1', 1, '2021-12-29 15:58:46');
+(140, 22, 6, 21, 0, 1, '1554.00', '05931824', '::1', 0, '2021-12-29 15:58:46'),
+(141, 22, 6, 21, 0, 1, '1554.00', '20781649', '::1', 1, '2022-01-09 10:35:17'),
+(142, 22, 7, 21, 0, 1, '34899.32', '20781649', '::1', 1, '2021-12-05 10:35:17'),
+(143, 22, 6, 22, 0, 1, '1554.00', '71409568', '::1', 0, '2022-01-13 19:46:32'),
+(144, 22, 6, 22, 0, 2, '3108.00', '98654120', '::1', 1, '2022-01-13 19:51:27'),
+(145, 22, 7, 22, 0, 1, '34899.32', '51304278', '::1', 1, '2022-01-13 19:52:31');
 
 -- --------------------------------------------------------
 
@@ -1318,7 +1330,7 @@ CREATE TABLE `user_adress` (
 INSERT INTO `user_adress` (`adress_id`, `user_id`, `adress_title`, `user_name`, `user_tel`, `user_city`, `user_district`, `user_adress`, `user_tc`) VALUES
 (19, 20, 'Umut&#039;un Evi', 'Umut Erozan', '5062645455', 14, 213, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '31314314134'),
 (20, 21, 'Umut&#039;un Ev&#039;i', 'Umut Erozan', '4848485494', 6, 128, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '31241331341'),
-(21, 22, 'Ev', 'Emrecan Ünlü', '0901034143', 3, 93, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '13431431414');
+(22, 22, 'Ev', 'Emrecan Ünlü', '5061547830', 3, 93, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '11692698710');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -1422,7 +1434,7 @@ ALTER TABLE `counties`
 -- Tablo için AUTO_INCREMENT değeri `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `products`
@@ -1458,7 +1470,7 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `user_adress`
 --
 ALTER TABLE `user_adress`
-  MODIFY `adress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `adress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -22,7 +22,11 @@
         public function dashboard ()
         {
 
-            $this -> load -> view ('adminpanel/dashboard');
+            $data['weekly'] = $this -> db -> query('CALL sp_weeklySales()') -> row();
+            mysqli_next_result($this->db->conn_id);
+            $data['monthly'] = $this -> db -> query('CALL sp_monthlySales()') -> row();
+
+            $this -> load -> view ('adminpanel/dashboard', $data);
 
         }
 

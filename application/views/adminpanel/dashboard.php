@@ -42,15 +42,15 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="detail">
-                                                <p class="detail-subtitle">New Orders</p>
-                                                <span class="number">6,267</span>
+                                                <p class="detail-subtitle">Yeni Sipariş </p>
+                                                <span class="number"><?=is_null($monthly -> qty) ? 0 : $monthly -> qty;?></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="footer">
                                         <hr />
                                         <div class="stats">
-                                            <i class="fas fa-calendar"></i> For this Week
+                                            <i class="fas fa-calendar"></i> Bu ay için
                                         </div>
                                     </div>
                                 </div>
@@ -67,15 +67,15 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="detail">
-                                                <p class="detail-subtitle">Revenue</p>
-                                                <span class="number">$180,900</span>
+                                                <p class="detail-subtitle">Toplam Kazanç</p>
+                                                <span class="number"><?=is_null($monthly -> subtotal) ? 0 : $monthly -> subtotal;?></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="footer">
                                         <hr />
                                         <div class="stats">
-                                            <i class="fas fa-calendar"></i> For this Month
+                                            <i class="fas fa-calendar"></i> Bu ay için
                                         </div>
                                     </div>
                                 </div>
@@ -87,20 +87,20 @@
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <div class="icon-big text-center">
-                                                <i class="violet fas fa-eye"></i>
+                                                <i class="violet fas fa-shopping-cart"></i>
                                             </div>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="detail">
-                                                <p class="detail-subtitle">Page views</p>
-                                                <span class="number">28,210</span>
+                                                <p class="detail-subtitle">YENİ SİPARİŞ</p>
+                                                <span class="number"><?=is_null($weekly -> qty) ? 0 : $weekly -> qty;?></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="footer">
                                         <hr />
                                         <div class="stats">
-                                            <i class="fas fa-stopwatch"></i> For this Month
+                                            <i class="fas fa-stopwatch"></i> Bu hafta için
                                         </div>
                                     </div>
                                 </div>
@@ -112,20 +112,20 @@
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <div class="icon-big text-center">
-                                                <i class="orange fas fa-envelope"></i>
+                                                <i class="orange fas fa-money-bill-alt"></i>
                                             </div>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="detail">
-                                                <p class="detail-subtitle">Support Request</p>
-                                                <span class="number">75</span>
+                                                <p class="detail-subtitle">Toplam Kazanç</p>
+                                                <span class="number"><?=is_null($weekly -> subtotal) ? 0 : $weekly -> subtotal;?></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="footer">
                                         <hr />
                                         <div class="stats">
-                                            <i class="fas fa-envelope-open-text"></i> For this week
+                                            <i class="fas fa-envelope-open-text"></i> Bu hafta için
                                         </div>
                                     </div>
                                 </div>
