@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 13 Oca 2022, 20:53:32
+-- Üretim Zamanı: 25 Oca 2022, 11:33:47
 -- Sunucu sürümü: 10.4.22-MariaDB
--- PHP Sürümü: 8.0.14
+-- PHP Sürümü: 8.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,7 +57,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `admin_email`, `admin_password`) VALUES
-(1, 'admin@eticaret.com', 'd033e22ae348aeb5660fc2140aec35850c4da997');
+(1, 'unl.c.emre@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5');
 
 -- --------------------------------------------------------
 
@@ -1208,7 +1208,25 @@ INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `adress_id`, `option_
 (142, 22, 7, 21, 0, 1, '34899.32', '20781649', '::1', 1, '2021-12-05 10:35:17'),
 (143, 22, 6, 22, 0, 1, '1554.00', '71409568', '::1', 0, '2022-01-13 19:46:32'),
 (144, 22, 6, 22, 0, 2, '3108.00', '98654120', '::1', 1, '2022-01-13 19:51:27'),
-(145, 22, 7, 22, 0, 1, '34899.32', '51304278', '::1', 1, '2022-01-13 19:52:31');
+(145, 22, 7, 22, 0, 1, '34899.32', '51304278', '::1', 1, '2022-01-13 19:52:31'),
+(146, 22, 8, 22, 29, 1, '5333.90', '03426875', '::1', 0, '2022-01-24 18:32:23'),
+(147, 22, 12, 22, 31, 1, '139.90', '03426875', '::1', 0, '2022-01-24 18:32:23'),
+(148, 22, 11, 22, 0, 1, '10498.99', '95143082', '::1', 0, '2022-01-24 18:34:42'),
+(149, 22, 12, 22, 32, 1, '139.90', '97234508', '::1', 1, '2022-01-24 18:36:32'),
+(150, 22, 11, 22, 0, 1, '10498.99', '95836041', '::1', 0, '2022-01-24 18:40:59'),
+(151, 22, 11, 22, 0, 1, '10498.99', '36829754', '::1', 0, '2022-01-24 19:50:19'),
+(152, 22, 11, 22, 0, 1, '10498.99', '78256104', '::1', 0, '2022-01-24 19:52:50'),
+(153, 22, 10, 22, 0, 1, '2099.00', '30456918', '::1', 0, '2022-01-24 19:53:32'),
+(154, 22, 10, 22, 0, 1, '2099.00', '50389427', '::1', 0, '2022-01-24 19:55:20'),
+(155, 22, 12, 22, 30, 1, '139.90', '74813205', '::1', 0, '2022-01-24 19:55:45'),
+(156, 22, 12, 22, 30, 1, '139.90', '18746925', '::1', 0, '2022-01-24 19:58:04'),
+(157, 22, 10, 22, 0, 1, '2099.00', '05382674', '::1', 1, '2022-01-24 19:59:20'),
+(158, 22, 9, 22, 0, 1, '14599.00', '31576498', '::1', 0, '2022-01-25 09:04:00'),
+(159, 23, 11, 23, 0, 1, '10498.99', '02378495', '::1', 0, '2022-01-25 09:07:32'),
+(160, 22, 10, 22, 0, 1, '2099.00', '61984257', '::1', 1, '2022-01-25 09:12:20'),
+(161, 22, 10, 22, 0, 2, '4198.00', '72316584', '::1', 0, '2022-01-25 09:45:57'),
+(162, 22, 13, 22, 33, 1, '1598.99', '49507368', '::1', 0, '2022-01-25 09:52:27'),
+(163, 22, 13, 22, 33, 1, '1598.99', '82365947', '::1', 0, '2022-01-25 09:54:56');
 
 -- --------------------------------------------------------
 
@@ -1232,9 +1250,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `category_id`, `product_image`, `product_entry_date`, `product_url`, `is_live`) VALUES
-(3, 'Samsung Galaxy S21 5G 128 GB (Samsung Türkiye Garantili)', '9699.00', 10, '2f23ab5ea34520fc868ce87f915dffbb.jpg', '2021-12-29 15:37:51', 'samsung-galaxy-s21-5g-128-gb-samsung-turkiye-garantili', 0),
-(6, 'Emporio Armani Ar1452 Erkek Kol Saati', '1554.00', 19, '047b38bcfa4df7d338874d2a21c26313.jpg', '2021-12-29 15:41:05', 'emporio-armani-ar1452-erkek-kol-saati', 1),
-(7, 'Asus ROG Zephyrus GX703HM-KF007 Intel Core i7 11800H 16GB 1TB SSD RTX3060 Freedos 17.3&quot; FHD Taşınabilir Bilgisayar', '34899.32', 11, '9bb2719580afb9a9c6ff70161dd40535.jpg', '2021-12-29 15:43:13', 'asus-rog-zephyrus-gx703hm-kf007-intel-core-i7-11800h-16gb-1tb-ssd-rtx3060-freedos-17-3-fhd-tasinabilir-bilgisayar', 1);
+(8, 'Dreame Bot D9 Max Robot Vakum ve Paspas', '5333.90', 12, '8663e27906d6d648bdac4fc9a23b710f.jpg', '2022-01-24 18:25:46', 'dreame-bot-d9-max-robot-vakum-ve-paspas', 1),
+(9, 'Dell Gaming G15 AMD Ryzen 5-5600H 8GB 512GB SSD RTX3050 4GB VGA 15.6” FHD Windows 11 Home Taşınabilir Bilgisayar G15-FGR556W85N', '14599.00', 11, 'bd68fcdbcd3b5867408a53e523b39db6.jpg', '2022-01-24 18:27:25', 'dell-gaming-g15-amd-ryzen-5-5600h-8gb-512gb-ssd-rtx3050-4gb-vga-15-6-fhd-windows-11-home-tasinabilir-bilgisayar-g15-fgr556w85n', 1),
+(10, 'Intel Core i5 10400F 2.90GHz LGA1200 12MB Cache İşlemci', '2099.00', 13, '509e5cecabd87224f200decde80749c5.jpg', '2022-01-24 18:28:25', 'intel-core-i5-10400f-2-90ghz-lga1200-12mb-cache-islemci', 1),
+(11, 'EVGA GeForce RTX 2060 KO ULTRA GAMING 6GB GDDR6 192Bit Nvidia DX12 Ekran Kartı', '10498.99', 13, '4beba1bee15bd57d7875decabbd8efe9.jpg', '2022-01-24 18:29:13', 'evga-geforce-rtx-2060-ko-ultra-gaming-6gb-gddr6-192bit-nvidia-dx12-ekran-karti', 1),
+(12, 'Hummel Leon Unisex Spor Ayakkabı 900102-7986', '139.90', 20, '463de6421f72797e0cad96ffa8878dd6.jpg', '2022-01-24 18:30:34', 'hummel-leon-unisex-spor-ayakkabi-900102-7986', 1),
+(13, 'Viewsonic VA2405-H 23.6&quot; 75Hz 3ms (HDMI+Analog) Full HD Led Monitör', '1598.99', 12, 'deb229bd5b4ee0425a7b25f6827afc7d.jpg', '2022-01-25 09:51:58', 'viewsonic-va2405-h-23-6-75hz-3ms-hdmi-analog-full-hd-led-monitor', 1);
 
 -- --------------------------------------------------------
 
@@ -1257,8 +1278,20 @@ INSERT INTO `product_images` (`image_id`, `product_id`, `image_path`) VALUES
 (72, 5, '280ad917e6e9e4379b03070a25e22d9b.jpg'),
 (73, 5, 'c9dd1a293a9468e6250ef6d201bb456f.jpg'),
 (74, 5, '035ba7b34f22b126adac9e595bc061ce.jpg'),
-(75, 7, '20f3a9e299d3a1c6455c091ce254ecc0.jpg'),
-(76, 7, '2420c9bb1a083c736d0a8d71a005b1e7.jpg');
+(77, 8, '84e93815b6bb052957fb89cde8ed8d1a.jpg'),
+(78, 8, 'e5a84a039b6146964534bdacb032f6ae.jpg'),
+(79, 9, 'adaeb2b9f3706c733f6ff437138e0d29.jpg'),
+(80, 9, 'bdac544bd180fbf103f0a96e8f810fec.jpg'),
+(81, 9, 'b04249ad1a6db80705ce9bcd57e01e91.jpg'),
+(82, 9, '18d6dc5af581fd65f58e06770198c6af.jpg'),
+(83, 11, 'cd6a6552e4f6bf13aea39ba19e07cdce.jpg'),
+(84, 11, '2fe4000c7db2eb14c3a9a7aa3d845416.jpg'),
+(85, 11, '9fe4c900d3b079e5cfab217a98616c44.jpg'),
+(86, 11, '2835e84372c3336681954032224e45ca.jpg'),
+(87, 12, '07751c2c229b89b5aeb3ff98095f561d.jpg'),
+(88, 13, 'e73719deefc439aaef9e7677183adb7e.jpg'),
+(89, 13, '1557f5fc8091dba54ff33f653993cc93.jpg'),
+(90, 13, '6f8284b45f88f9860a19974ab692c7cf.jpg');
 
 -- --------------------------------------------------------
 
@@ -1271,6 +1304,17 @@ CREATE TABLE `product_options` (
   `product_id` int(11) NOT NULL,
   `option_value` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Tablo döküm verisi `product_options`
+--
+
+INSERT INTO `product_options` (`option_id`, `product_id`, `option_value`) VALUES
+(29, 8, 'Siyah'),
+(30, 12, 'Gri'),
+(31, 12, 'Siyah'),
+(32, 12, 'Mavi'),
+(33, 13, 'Siyah');
 
 -- --------------------------------------------------------
 
@@ -1303,7 +1347,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_register_date`) VALUES
 (21, 'Umut Erozan', 'umut.erozan@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2021-12-27 10:29:26'),
-(22, 'Emrecan Ünlü', 'unl.c.emre@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-27 16:00:00');
+(22, 'Emrecan Unlu', 'unl.c.emre@gmail.com', 'b2c1d08e7451a706833cbb8a4fcc93a15c74c0f5', '2021-12-27 16:00:00'),
+(23, 'Oğuzhan İlüfer', 'oguzha.ilufer@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2022-01-25 09:05:55');
 
 -- --------------------------------------------------------
 
@@ -1330,7 +1375,58 @@ CREATE TABLE `user_adress` (
 INSERT INTO `user_adress` (`adress_id`, `user_id`, `adress_title`, `user_name`, `user_tel`, `user_city`, `user_district`, `user_adress`, `user_tc`) VALUES
 (19, 20, 'Umut&#039;un Evi', 'Umut Erozan', '5062645455', 14, 213, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '31314314134'),
 (20, 21, 'Umut&#039;un Ev&#039;i', 'Umut Erozan', '4848485494', 6, 128, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '31241331341'),
-(22, 22, 'Ev', 'Emrecan Ünlü', '5061547830', 3, 93, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '11692698710');
+(22, 22, 'Ev', 'Emrecan Ünlü', '5061547830', 3, 93, 'No:124, Orta Mahalle Caddesi.\r\nÇamlıca Apartmanı, Kat:5, Daire: 30', '11692698710'),
+(23, 23, 'Ev', 'Oğuzhan İlüfer', '5061454888', 1, 9, 'İstanbul / Bayrampaşa no:124', '11692588961'),
+(24, 22, 'Ev Adresim 2', 'Emrecan Ünlü', '5061547830', 3, 93, 'İzmir/Torbalı, Muratbey Mahallesi, No:3506 Kat:1, Daire:1', '11692698710');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `visitors`
+--
+
+CREATE TABLE `visitors` (
+  `visitor_id` int(11) NOT NULL,
+  `ip_address` varchar(25) NOT NULL,
+  `referrer` varchar(512) DEFAULT NULL,
+  `platform` varchar(255) NOT NULL,
+  `browser` varchar(255) NOT NULL,
+  `page` varchar(512) NOT NULL,
+  `entry_time` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Tablo döküm verisi `visitors`
+--
+
+INSERT INTO `visitors` (`visitor_id`, `ip_address`, `referrer`, `platform`, `browser`, `page`, `entry_time`) VALUES
+(16, '::1', NULL, 'Windows 10', 'Chrome', '', '2022-01-25 12:48:03'),
+(17, '::1', NULL, 'Windows 10', 'Chrome', 'evga-geforce-rtx-2060-ko-ultra-gaming-6gb-gddr6-192bit-nvidia-dx12-ekran-karti', '2022-01-25 12:48:07'),
+(18, '::1', NULL, 'Windows 10', 'Chrome', 'evga-geforce-rtx-2060-ko-ultra-gaming-6gb-gddr6-192bit-nvidia-dx12-ekran-karti', '2022-01-25 12:48:39'),
+(19, '::1', NULL, 'Windows 10', 'Chrome', 'Anasayfa', '2022-01-25 12:48:41'),
+(20, '::1', NULL, 'Windows 10', 'Chrome', 'adminauth/login', '2022-01-25 12:49:11'),
+(21, '::1', NULL, 'Windows 10', 'Chrome', 'admin/dashboard_cart', '2022-01-25 12:49:12'),
+(22, '::1', NULL, 'Windows 10', 'Chrome', 'admin/add_product', '2022-01-25 12:51:58'),
+(23, '::1', NULL, 'Windows 10', 'Chrome', 'Anasayfa', '2022-01-25 12:52:01'),
+(24, '::1', NULL, 'Windows 10', 'Chrome', 'viewsonic-va2405-h-23-6-75hz-3ms-hdmi-analog-full-hd-led-monitor', '2022-01-25 12:52:04'),
+(25, '::1', NULL, 'Windows 10', 'Chrome', 'api/add_basket', '2022-01-25 12:52:11'),
+(26, '::1', NULL, 'Windows 10', 'Chrome', 'sepet', '2022-01-25 12:52:14'),
+(27, '::1', NULL, 'Windows 10', 'Chrome', 'giris-yap', '2022-01-25 12:52:17'),
+(28, '::1', NULL, 'Windows 10', 'Chrome', 'user/login', '2022-01-25 12:52:21'),
+(29, '::1', NULL, 'Windows 10', 'Chrome', 'Anasayfa', '2022-01-25 12:52:21'),
+(30, '::1', NULL, 'Windows 10', 'Chrome', 'sepet', '2022-01-25 12:52:23'),
+(31, '::1', NULL, 'Windows 10', 'Chrome', 'siparisi-tamamla', '2022-01-25 12:52:25'),
+(32, '::1', NULL, 'Windows 10', 'Chrome', 'odeme', '2022-01-25 12:52:27'),
+(33, '::1', NULL, 'Windows 10', 'Chrome', 'Anasayfa', '2022-01-25 12:53:28'),
+(34, '::1', NULL, 'Windows 10', 'Chrome', 'Anasayfa', '2022-01-25 12:54:16'),
+(35, '::1', NULL, 'Windows 10', 'Chrome', 'hesap-ayarlari', '2022-01-25 12:54:19'),
+(36, '::1', NULL, 'Windows 10', 'Chrome', 'sepet', '2022-01-25 12:54:22'),
+(37, '::1', NULL, 'Windows 10', 'Chrome', 'siparisi-tamamla', '2022-01-25 12:54:53'),
+(38, '::1', NULL, 'Windows 10', 'Chrome', 'odeme', '2022-01-25 12:54:55'),
+(39, '::1', NULL, 'Windows 10', 'Chrome', 'giris-yap', '2022-01-25 12:55:35'),
+(40, '::1', NULL, 'Windows 10', 'Chrome', 'Anasayfa', '2022-01-25 12:55:38'),
+(41, '::1', NULL, 'Windows 10', 'Chrome', 'Anasayfa', '2022-01-25 12:57:45'),
+(42, '::1', NULL, 'Windows 10', 'Chrome', 'giris-yap', '2022-01-25 12:57:51');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -1403,6 +1499,12 @@ ALTER TABLE `user_adress`
   ADD PRIMARY KEY (`adress_id`);
 
 --
+-- Tablo için indeksler `visitors`
+--
+ALTER TABLE `visitors`
+  ADD PRIMARY KEY (`visitor_id`);
+
+--
 -- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
 --
 
@@ -1434,25 +1536,25 @@ ALTER TABLE `counties`
 -- Tablo için AUTO_INCREMENT değeri `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product_options`
 --
 ALTER TABLE `product_options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `slider`
@@ -1464,13 +1566,19 @@ ALTER TABLE `slider`
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `user_adress`
 --
 ALTER TABLE `user_adress`
-  MODIFY `adress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `adress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `visitors`
+--
+ALTER TABLE `visitors`
+  MODIFY `visitor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

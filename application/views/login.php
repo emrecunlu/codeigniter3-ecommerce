@@ -38,7 +38,7 @@
                             <input type="email" name="user_email" id="user-email" placeholder="ad.soyad@example.com">
                         </div>
                         <div class="input__group">
-                            <label for="user-password">E-Mail</label>
+                            <label for="user-password">Şifre</label>
                             <div class="show__input">
                                 <input type="password" name="user_password" id="user-email" placeholder="****">
                                 <i class="fa fa-eye show-password" aria-hidden="true"></i>

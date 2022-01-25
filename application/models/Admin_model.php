@@ -21,6 +21,13 @@
 
         }
 
+        public function update($id, $data)
+        {
+            return $this -> db
+                         -> where('admin_id', $id)
+                         -> update($this -> table_name, $data);
+        }
+
     }
 
 ?>

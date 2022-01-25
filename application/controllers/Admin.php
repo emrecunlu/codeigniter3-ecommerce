@@ -18,6 +18,17 @@
 
         }
 
+        public function logout()
+        {
+            if ($this -> session -> has_userdata('admin')) {
+                $this -> session -> unset_userdata('admin');
+
+                redirect(base_url('adminpanel'));
+            }else {
+                redirect(base_url('adminpanel'));
+            }
+        }
+
         public function get_product ()
         {
 
@@ -64,6 +75,39 @@
                 
             }
 
+        }
+
+        public function change_password()
+        {
+            $this -> form_validation -> set_rules('email', 'E-posta adresiniz', 'required');
+            $this -> form_validation -> set_rules('password', 'Şifreniz', 'required');
+
+            if ($this -> form_validation -> run() == TRUE) {
+                $data = html_escape($this -> security -> xss_clean(array(
+                    'admin_email' => $this -> input -> post('email'),
+                    'admin_password' => sha1($this -> input -> post('password'))
+                )));
+
+                $id = $this -> session -> userdata('admin') -> admin_id;
+
+                $this -> load -> model ('Admin_model', 'admin');
+
+                if ($this -> admin -> update($id, $data)) {
+                    $this -> session -> set_flashdata('alert_success', 'Şifreniz başarıyla değişti, Lütfen giriş yapınız.');
+
+                    $this -> session -> unset_userdata('admin');
+
+                    redirect(base_url('adminpanel'));
+                } else {
+                    $this -> session -> set_flashdata('alert_danger', 'Şifre değiştirilirken hata!');
+
+                    redirect(base_url('adminpanel/adminSettings'));
+                }
+            } else {
+                $this -> session -> set_flashdata('alert_danger', validation_errors('<li>','</li>'));
+
+                redirect(base_url('adminpanel/adminSettings'));
+            }
         }
 
         public function delete ()

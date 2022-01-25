@@ -13,10 +13,6 @@
         public function __construct ()
         {
 
-            // same site problem fixed, added new header.
-
-            header('Set-Cookie: cross-site-cookie=bar; SameSite=None; Secure');
-
             require APPPATH . 'third_party/iyzipay/IyzipayBootstrap.php';
 
             IyzipayBootstrap::init ();

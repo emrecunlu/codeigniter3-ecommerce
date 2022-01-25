@@ -6,9 +6,6 @@
         <ul class="nav navbar-nav ms-auto">
             <li class="nav-item dropdown">
                 <div class="nav-dropdown">
-                    <a href="#" id="nav1" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
-                    </a>
                     <div class="dropdown-menu dropdown-menu-end nav-link-menu" aria-labelledby="nav1">
                         <ul class="nav-list">
                             <li><a href="" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a></li>
@@ -25,15 +22,20 @@
             <li class="nav-item dropdown">
                 <div class="nav-dropdown">
                     <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <span>John Doe</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
+                        <i class="fas fa-user"></i> <span>Admin</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end nav-link-menu">
                         <ul class="nav-list">
-                            <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i> Profile</a></li>
-                            <li><a href="" class="dropdown-item"><i class="fas fa-envelope"></i> Messages</a></li>
-                            <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a></li>
-                            <div class="dropdown-divider"></div>
-                            <li><a href="" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            <li><a href="<?=base_url('admin/logout')?>" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <div class="nav-dropdown">
+                    <div class="dropdown-menu dropdown-menu-end nav-link-menu">
+                        <ul class="nav-list">
+                            <li><a href="<?=base_url('admin/logout')?>" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
                         </ul>
                     </div>
                 </div>

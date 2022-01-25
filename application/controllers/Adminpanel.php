@@ -73,6 +73,11 @@
 
         }
 
+        public function adminSettings()
+        {
+            $this -> load -> view('adminpanel/admin_settings');
+        }
+
     }
 
 ?>

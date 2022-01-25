@@ -95,18 +95,16 @@
                 $this -> order -> add ( $cart);
 
                 $this -> load -> view ('payment-screen');
-
+                
             }
 
         }
 
         public function new_payment ($order_id = null)
         {
-
+            setcookie('cross-site-cookie', 'bar', ['samesite' => 'None', 'secure' => true]);
 
             // Iyzico samesite problem fixed.
-            
-            setcookie('cross-site-cookie', 'bar', ['samesite' => 'None', 'secure' => true]);
 
             if ( $this -> input -> method (true) == 'POST')
             {
@@ -123,6 +121,8 @@
                     $this -> order -> update ( array ('order_no' => $order_id), array ('is_completed' => 1));
 
                     $this -> session -> set_flashdata ('payment_success', true);
+
+                    $this -> cart -> destroy();
 
                     redirect ( base_url());
 

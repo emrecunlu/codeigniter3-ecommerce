@@ -21,12 +21,7 @@
             <a href="<?=base_url('adminpanel/orders');?>"><i class="fas fa-shopping-cart"></i>Siparişler</a>
         </li>
         <li>
-            <a href="#settingsMenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i> Ayarlar</a>
-            <ul class="collapse list-unstyled" id="settingsMenu">
-                <li>
-                    <a href="<?=base_url('adminpanel/showProducts');?>"><i class="fas fa-table"></i> Slider</a>
-                </li>
-            </ul>
+            <a href="<?=base_url('adminpanel/adminSettings');?>"><i class="fas fa-cog"></i> Admin</a>
         </li>
     </ul>
 </nav>
